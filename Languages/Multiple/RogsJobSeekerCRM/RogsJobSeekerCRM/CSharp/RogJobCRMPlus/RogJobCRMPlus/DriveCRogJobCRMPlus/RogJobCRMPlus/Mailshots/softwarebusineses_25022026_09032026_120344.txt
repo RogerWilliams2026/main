@@ -1,0 +1,40 @@
+Name:Mellow Marsh Software Ltd
+Addr:support@mellowms.co.uk
+Name:DBLogic
+Addr:support@dblogic.co.uk
+Name:Codevate
+Addr:hello@codevate.com
+Name:Acutec
+Addr:hello@acutec.co.uk
+Name:CodeFirst
+Addr:contact@codefirst.net
+Name:Blueberry Consultants
+Addr:jonathan.allan@bbconsult.co.uk
+Name:Ficode
+Addr:info@ficode.com
+Name:Redian Software
+Addr:sales@rediansoftware.com
+Name:Qualtec Systems
+Addr:info@qualtec.co.uk
+Name:DEVI TECHNOLOGIES LIMITED
+Addr:info@devitechs.com
+Name:Matchmaker Software
+Addr:enquiries@matchmakersoftware.com
+Name:Popcorn CRM
+Addr:support@popcornmail.co.uk
+Name:UK Software Company
+Addr:enquiries@uksoftwarecompany.co.uk
+Name:Mission Critical Limited
+Addr:sales@mission-critical.co.uk
+Name:Motawest Software Ltd
+Addr:info@motawest.com
+Name:Ark IT
+Addr:info@arkitservices.co.uk
+Name:Vision ERP
+Addr:enquiries@visionerp.co.uk
+Name:Compile (UK) Limited
+Addr:info@compileuk.com 
+Name:CPG Software Limited
+Addr:info@cpgsoftware.co.uk
+Name:Pinnacle
+Addr:hello@pinnacle-online.com

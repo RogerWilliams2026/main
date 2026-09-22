@@ -1,0 +1,106 @@
+Name:Extra Recruitment
+Addr:walsall@extrarecruitment.co.uk
+Name:Recruitment Solutions
+Addr:info@rec-solutions.net
+Name:Infused Solutions
+Addr:hello@infusedsolutions.co.uk
+Name:Erin Associates
+Addr:info@erinassociates.com
+Name:Alma Personnel
+Addr:info@almapersonnel.co.uk
+Name:Bell Cornwall Recruitment
+Addr:operations@bellcornwall.co.uk
+Name:Colossus Recruitment
+Addr:info@colossusrecruitment.com
+Name:GreenBee Recruitment
+Addr:info@greenbeerecruitment.co.uk
+Name:GSA Techsource
+Addr:gsa@gsatechsource.com
+Name:ITSS Recruitment Agency
+Addr:info@itssrecruitment.co.uk
+Name:Mainstay Recruitment
+Addr:info@mainstayrecruitment.co.uk
+Name:Major Recruitment Oldbury
+Addr:oldburybranch@major-recruitment.com
+Name:MET Recruitment
+Addr:info@metrecruitment.com
+Name:Nelson Recruitment Aldridge
+Addr:aldridge@nelsonrecruitmentservices.co.uk
+Name:Nelson Recruitment Birmingham
+Addr:birmingham@nelsonrecruitmentservices.co.uk
+Name:Nextech Group Limited
+Addr:info@nextech-group.co.uk
+Name:Noir Consulting
+Addr:hello@noirconsulting.co.uk
+Name:Rec Solutions
+Addr:info@rec-solutions.net
+Name:Rise Technical
+Addr:enquiry@risetechnical.co.uk
+Name:ShortList
+Addr:UK@shortlist.careers
+Name:BMR Associates
+Addr:info@bmrassociates.co.uk
+Name:Chapman Tate
+Addr:info@chapmantate.com
+Name:TTRG
+Addr:vacancies@ttrg.co.uk
+Name:Uniting People
+Addr:info@unitingpeople.co.uk
+Name:Anderson Scott
+Addr:enquiries@anderscott.co.uk
+Name:Probe Jobs
+Addr:info@probejobs.co.uk
+Name:Jonathan Lees Stourbridge
+Addr:website@jonlee.co.uk
+Name:Technet IT
+Addr:info@technet-it.co.uk
+Name:Ashdown Group
+Addr:info@ashdowngroup.com
+Name:GreenField IT
+Addr:info@greenfield-it.co.uk
+Name:Parker Shaw
+Addr:danny@parkershaw.co.uk
+Name:Monarch IT
+Addr:contactus@monarchrecruitment.co.uk
+Name:Enter Recruitment
+Addr:mherra@enterit.co.uk
+Name:Dynamic Search Solutions
+Addr:contact@dynamicsearch.co.uk
+Name:Richard Wheeler Associates
+Addr:info@rwaconsultants.com
+Name:Intega IT
+Addr:enquiries@integait.co.uk
+Name:Influential People
+Addr:Contact@influential-people.co.uk
+Name:PathFinder
+Addr:enquires@itistheway.co.uk
+Name:Starting Point Recruitment
+Addr:enquiries@startingpointrecruitment.co.uk
+Name:Nigel Frank
+Addr:enq@nigelfrank.com
+Name:Hewett Recruitment
+Addr:hello@hewett-recruitment.co.uk
+Name:Thrive Employment
+Addr:stellawakeham@thriveemployment.co.uk
+Name:Principal IT
+Addr:hello@principalit.co.uk
+Name:Kingscroft
+Addr:info@kingscroft.co.uk
+Name:Corriculo
+Addr:letstalk@corriculo.co.uk
+Name:Proactive Appointments
+Addr:recruit@proactive.it
+Name:The Best Connection
+Addr:walsall@thebestconnection.co.uk
+Name:Titan Recruitment
+Addr:info@titanrecruit.com
+Name:Daniel Owen
+Addr:birmingham.office@danielowen.co.uk
+Name:Coyles Personnel
+Addr:info@coyles.co.uk
+Name:Career Link
+Addr:recruitment@careerlink.uk.com
+Name:212 Recruitment
+Addr:jobs@212recruitment.com
+Name:Sky Blue Solutions
+Addr:ask@skybluesolutions.co.uk
