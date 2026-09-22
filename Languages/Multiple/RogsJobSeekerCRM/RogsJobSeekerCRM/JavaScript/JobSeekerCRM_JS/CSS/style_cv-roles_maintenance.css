@@ -1,0 +1,190 @@
+#secMain-cv-rolesmaintenance {
+    width                            : 500px;
+    
+}
+#lblID {
+    left                             : 10px;
+}
+#cmbID {
+    left                             : 200px;
+    width                            : 80px;
+}
+#btnNew {
+    left                             : 290px;
+    top                              : 15px;
+}
+#btnSave, #btnUndo, #btnDelete {
+    top                              : 660px;
+}
+
+#lblCVR_Name {
+    left                             : 10px;
+    top                              : 50px;
+}
+#txtCVR_Name {
+    left                             : 200px;
+    top                              : 60px;
+    width                            : 50ch;
+}
+.clhLine {
+    top                              : 98px; 
+}
+#lblResponsibilities {
+    left                             : 10px;
+    top                              : 90px;
+}
+
+/*
+  table and table controls
+*/
+/* 
+
+   headers container
+
+*/
+#divTableHeaders {
+    position                         : absolute;
+    top                              : 110px;
+    width                            : 970px;
+}
+
+/*
+ table headers
+*/
+#divTableHeaderSelect {
+    width                            : 20ch;
+    left                             : 0;
+}
+#divTableHeader1 {
+    left                             : 85px;
+}
+#divTableHeader2 {
+    left                             : 237px;
+}
+#divTableResponsibilities {
+    position                         : absolute;
+    left                             : 10px;
+    top                              : 140px; 
+    border                           : solid;
+    border-color                     :green;
+    border-width                     : 1px;
+    width                            : 970px;
+    height                           : 220px;
+    display                          : block;
+    background-color                 : none;
+    scrollbar-color                  : yellow darkblue;
+    scroll-behavior                  : smooth;
+    scrollbar-width                  : 10px;
+    overflow-y                       : scroll;
+    overflow-x                       : scroll;
+    border-radius                    : 6px;
+}
+.clhResponsibilitiesRowContainer {
+    background-color                 :darkslategrey;
+    display                          : inline-block;
+    width                            : 970px;
+    height                           : 30px;
+}
+
+/*
+ table elements
+*/
+.btnSelect {
+    width                            : 6ch;
+    left                             : 0;
+}
+.clhResponsibilityCol1 {
+    left                             : 0;
+    margin-right                     : 20px;
+    color                            : yellow;
+    height                           : 30px;
+}
+.clhResponsibilityCol2 {
+    margin-right                     : 2px;
+    padding-top                      : 5px; 
+    padding-left                     : 2px;
+    color                            : yellow;
+    height                           : 30px;
+    left                             : 82px;
+} 
+.clhResponsibilityCol3 {
+    margin-right                     : 2px;
+    padding-top                      : 5px; 
+    padding-left                     : 2px;
+    color                            : yellow;
+    height                           : 30px;
+    left                             : 232px;
+}    
+/*
+#pResponsibility_Name {
+    grid-column                      : 1 /2;
+    grid-row                         : 1 /2;
+    margin-top                       : 0px;
+}
+#pResponsibility_Details {
+    grid-column                      : 2 /2;
+    grid-row                         : 1 /2;
+    margin-top                       : 0px;
+}
+
+#lstResponsibility_Name {
+    grid-column                      : 1 /2;
+    grid-row                         : 2 /2;
+    width                            : 200px;
+    height                           : 200px;
+}
+#lstResponsibility_Details {
+grid-column                          : 2 /2;
+grid-row                             : 2 /2;
+width                                : 750px;
+height                               : 200px;
+overflow                             : hidden;
+} */
+
+/*
+  form controls
+*/
+#lblCVRR_Name {
+    left                             : 10px;
+    top                              : 370px;
+}
+#txtCVRR_Name {
+    left                             : 200px;
+    top                              : 375px;
+    width                            : 50ch;
+}
+#lblCVRR_Details {
+    left                             : 10px;
+    top                              : 395px;
+}
+#txtCVRR_Details {
+    left                             : 10px;
+    top                              : 440px;
+    width                            : 110ch;
+    height                           : 130px;
+}
+#divResponsibilities {
+    border                           : solid;
+    border-color                     : white;
+    border-radius                    : 2px;
+    top                              : 590px;
+    height                           : 40px;
+    width                            : 830px;
+    padding                          : 10px;
+}
+#btnNewResponsibility {
+    left                             : 10px;
+    width                            : 220px;
+}
+#btnSaveResponsibility {
+    left                             : 240px;
+    width                            : 230px;   
+}
+#btnDeleteResponsibility {
+    left                             : 480px;
+    width                            : 240px;
+}
+#btnClear {
+    left                             : 730px;
+    width                            : 110px;
+}

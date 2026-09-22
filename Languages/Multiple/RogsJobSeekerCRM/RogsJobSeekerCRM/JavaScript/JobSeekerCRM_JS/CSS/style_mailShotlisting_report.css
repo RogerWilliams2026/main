@@ -1,0 +1,70 @@
+#secMain-mailshotlisting_report {
+    width                            : 500px;
+    
+}
+#lblID {
+    left                             : 10px;
+}
+#cmbID {
+    left                             : 200px;
+    width                            : 80px;
+}
+#btnNew {
+    left                             : 280px;
+    top                              : 15px;
+}
+#btnPrint, #btnPreview {
+    top                              : 120px;
+}
+#btnClose {
+    position                         : absolute;
+    top                              : 130px;
+    left                             : 200px; 
+}
+#lblAllMailshots {
+    left                             : 320px; 
+}
+#chkAllMailshots {
+    position                         : absolute; 
+    left                             : 290px;
+    top                              : 22px;
+}
+#divMSH_MailshotName {
+    position                         : absolute; 
+    left                             : 350px;
+    top                              : 20px;
+    width                            : 51ch;
+    height                           : 30px;
+    border                           : solid;
+    border-width                     : 1px;
+    border-color                     : white;
+    padding-top                      : 5px;
+    padding-left                     : 1ch;
+
+}
+#lblDateFrom {
+    left                             : 8px;
+    top                              : 50px;
+}
+#cmbDateFrom {
+    left                             : 200px;
+    top                              : 50px;
+}
+#lblDateTo {
+    left                             : 350px;
+    top                              : 50px;
+}
+#cmbDateTo {
+    Left                             : 390px;
+    top                              : 50px;
+}
+#chkAllDates {
+    left                             : 480px;
+    top                              : 64px;
+}
+#lblAllDates {
+    left                             : 510px;
+    top                              : 50px;
+}
+
+
