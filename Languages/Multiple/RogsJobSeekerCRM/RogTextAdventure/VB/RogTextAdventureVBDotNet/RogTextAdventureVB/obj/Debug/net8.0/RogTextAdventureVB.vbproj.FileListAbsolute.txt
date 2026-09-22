@@ -1,0 +1,15 @@
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\bin\Debug\net8.0\RogTextAdventureVB.exe
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\bin\Debug\net8.0\RogTextAdventureVB.deps.json
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\bin\Debug\net8.0\RogTextAdventureVB.runtimeconfig.json
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\bin\Debug\net8.0\RogTextAdventureVB.dll
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\bin\Debug\net8.0\RogTextAdventureVB.pdb
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Debug\net8.0\RogTextAdventureVB.GeneratedMSBuildEditorConfig.editorconfig
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Debug\net8.0\RogTextAdventureVB.AssemblyInfoInputs.cache
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Debug\net8.0\RogTextAdventureVB.AssemblyInfo.vb
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Debug\net8.0\RogTextAdventureVB.vbproj.CoreCompileInputs.cache
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Debug\net8.0\RogTextAdventureVB.dll
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Debug\net8.0\refint\RogTextAdventureVB.dll
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Debug\net8.0\RogTextAdventureVB.pdb
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Debug\net8.0\RogTextAdventureVB.genruntimeconfig.cache
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Debug\net8.0\ref\RogTextAdventureVB.dll
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Debug\net8.0\RogTextAdventureVB.sourcelink.json

@@ -1,0 +1,2 @@
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\bin\Release\net8.0\publish\win-x64\RogTextAdventureVB.pdb
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\bin\Release\net8.0\publish\win-x64\RogTextAdventureVB.exe

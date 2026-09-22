@@ -1,0 +1,14 @@
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\bin\Release\net8.0\win-x64\RogTextAdventureVB.exe
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\bin\Release\net8.0\win-x64\RogTextAdventureVB.deps.json
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\bin\Release\net8.0\win-x64\RogTextAdventureVB.runtimeconfig.json
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\bin\Release\net8.0\win-x64\RogTextAdventureVB.dll
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\bin\Release\net8.0\win-x64\RogTextAdventureVB.pdb
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Release\net8.0\win-x64\RogTextAdventureVB.GeneratedMSBuildEditorConfig.editorconfig
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Release\net8.0\win-x64\RogTextAdventureVB.AssemblyInfoInputs.cache
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Release\net8.0\win-x64\RogTextAdventureVB.AssemblyInfo.vb
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Release\net8.0\win-x64\RogTextAdventureVB.vbproj.CoreCompileInputs.cache
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Release\net8.0\win-x64\RogTextAdventureVB.dll
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Release\net8.0\win-x64\refint\RogTextAdventureVB.dll
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Release\net8.0\win-x64\RogTextAdventureVB.pdb
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Release\net8.0\win-x64\RogTextAdventureVB.genruntimeconfig.cache
+C:\projects\VisualStudio\Visual Basic\VS 2022\RogTextAdventureVBDotNet\RogTextAdventureVB\obj\Release\net8.0\win-x64\ref\RogTextAdventureVB.dll
