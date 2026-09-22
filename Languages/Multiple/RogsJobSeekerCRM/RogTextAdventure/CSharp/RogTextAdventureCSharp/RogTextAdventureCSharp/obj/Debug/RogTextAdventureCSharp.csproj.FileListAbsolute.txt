@@ -1,0 +1,7 @@
+C:\projects\VisualStudio\Csharp\RogTextAdventureCSharp\RogTextAdventureCSharp\obj\Debug\RogTextAdventureCSharp.csproj.AssemblyReference.cache
+C:\projects\VisualStudio\Csharp\RogTextAdventureCSharp\RogTextAdventureCSharp\bin\Debug\RogTextAdventureCSharp.exe.config
+C:\projects\VisualStudio\Csharp\RogTextAdventureCSharp\RogTextAdventureCSharp\bin\Debug\RogTextAdventureCSharp.exe
+C:\projects\VisualStudio\Csharp\RogTextAdventureCSharp\RogTextAdventureCSharp\bin\Debug\RogTextAdventureCSharp.pdb
+C:\projects\VisualStudio\Csharp\RogTextAdventureCSharp\RogTextAdventureCSharp\obj\Debug\RogTextAdventureCSharp.csproj.CoreCompileInputs.cache
+C:\projects\VisualStudio\Csharp\RogTextAdventureCSharp\RogTextAdventureCSharp\obj\Debug\RogTextAdventureCSharp.exe
+C:\projects\VisualStudio\Csharp\RogTextAdventureCSharp\RogTextAdventureCSharp\obj\Debug\RogTextAdventureCSharp.pdb
