@@ -1,0 +1,89 @@
+What Is It?
+===========
+ToDo list for the project
+
+05/02/2025
+- bang head on table to assertain why jobs applied for listing CSS shows fonts a fraction
+  of their ACTUAL size but mailshot listing report which I copied the CSS from works fine... 
+- check what happens in reports if more lines to print in detail than page can handle
+- blnNew needs to enforce whether user can type into screens when first loaded
+- letter and cv printing - browser won't allow it via live-server! - need to test locally
+- CV-Template Creator - not implemented at mo can't think of how to convert the Access form
+  into HTML! 
+- data validation for dates
+ 
+30/10/2025
+- blnNew needs to enforce whether user can type into screens when first loaded
+- envelope and cv printing - multiple pages single works
+- clean the comments
+- remove old code
+- CV-Template Creator - not implemented at mo can't think of how to convert the Access form
+  into HTML! 
+- mailshot envelopes HTML form test
+- when every screen works see if CSS grid can be used to replace position:absolute for element
+  positioning
+- *create auto number system for ID fields
+- create reports (HTML/CSS)
+- data validation for dates
+
+29/01/2025
+- envelope and cv printing!
+- clean the comments
+- remove old code
+- CV-Template Creator - not implemented at mo can't think of how to convert the Access form
+  into HTML! 
+- mailshot envelopes HTML form test
+- when every screen works see if CSS grid can be used to replace position:absolute for element
+  positioning
+- *create auto number system for ID fields
+- create reports (HTML/CSS)
+- data validation for dates
+
+24/01/2025
+- clean the comments
+- remove old code
+- create comboboxes and handling for cv_Roles screen also need for mailshot creator
+- in CV-Experience see if possible to stick a combobox full of CV_Roles data
+- CV-Template Creator - not implemented at mo can't think of how to convert the Access form
+  into HTML! 
+- mailshot envelopes HTML form test
+- when every screen works see if CSS grid can be used to replace position:absolute for element
+  positioning
+- *create auto number system for ID fields
+- create reports (HTML/CSS)
+- data validation for dates
+
+22/01/2025
+- create comboboxes and handling for cv_Roles screen also need for mailshot creator
+- in CV-Experience see if possible to stick a combobox full of CV_Roles data
+- CV-Template Creator - not implemented at mo can't think of how to convert the Access form
+  into HTML! 
+- mailshot envelopes HTML form test
+- when every screen works see if CSS grid can be used to replace position:absolute for element
+  positioning
+- *create auto number system for ID fields
+- create reports (HTML/CSS)
+- data validation for dates
+
+
+21/01/2025
+
+- CV-Template Creator - not implemented at mo can't think of how to convert the Access form
+  into HTML! 
+- mailshot envelopes HTML form test
+- when every screen works see if CSS grid can be used to replace position:absolute for element
+  positioning
+- *create auto number system for ID fields
+- create reports (HTML/CSS)
+- any data validation e.g. dates
+
+*depricated as error in schema create caused keyPath to be undefined!
+
+20/01/2025 - initial ideas
+
+- test delete 
+- test update
+- test undo
+- create auto number system for ID fields
+- create reports (HTML/CSS)
+ 

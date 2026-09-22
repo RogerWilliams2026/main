@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_screens.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_cv-template_maintenance.css"></link>
+
+    <!-- CSS fils for EACH CV attribute
+     
+   - contact
+   - currentfocus
+   - education
+   - experience
+   - highlights
+   - interests
+   - other
+   - personalinfo
+   - personality
+   - Responsibilities
+   - skills  
+    -->
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-contact.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-currentfocus.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-education.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-experience.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-highlights.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-interests.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-other.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-personalinfo.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-personality.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-Responsibilities.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-skills.css"></link>
+ 
+    <!-- messagebox CSS--> 
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_MsgBox.css"></link>
+</head>
+<body>
+    <main>
+        <div id="divHeader">
+           <label for="txtJobTitle" id="lblJobTitle">Preferred Job Tite:</label>  
+           <input type="text" id="txtJobTitle" tabindex="1" maxlength="50"/>  
+
+           <label for="txtCVTemplateName" id="lblCVTemplateName">Name of CV Template:</label>  
+           <input type="text" id="txtCVTemplateName" tabindex="2" maxlength="50"/>  
+           <label for="chkPrintAddress2" id="lblPrintAddress">Print Your Address On CV?:</label>  
+           <input type="checkbox" id="chkPrintAddress" checked="false" tabindex="3"> 
+           <div id="divLine" class="clhLine"></div>     
+        </div>
+
+        <div id="divBody">
+
+           <div id="divContactDetails">  
+                 <div id="divContactDetailsHeader">Contact Details</div>
+                 <div id="divCVContactDetailsHeader">CV Contact Details</div>
+                 <div id="divTableContact"></div>    
+                 <div id="divTableCVContact"></div> 
+           </div>
+       
+           <div id="divCurrentFocusDetails">  
+               <div id="divCurrentFocusDetailsHeader">Current Focus</div>
+               <div id="divCVCurrentFocusDetailsHeader">CV Current Focus</div>
+               <div id="divTableCurrentFocus"></div>     
+               <div id="divTableCVCurrentFocus"></div> 
+           </div>
+          
+           <div id="divEducationDetails">  
+               <div id="divEducationDetailsHeader">Education</div>
+               <div id="divCVEducationDetailsHeader">CV Education</div>
+               <div id="divTableEducation"></div>     
+               <div id="divTableCVEducation"></div> 
+           </div>
+ 
+          <div id="divExperienceDetails">  
+             <div id="divExperienceDetailsHeader">Experience</div>
+             <div id="divCVExperienceDetailsHeader">CV Experience</div>
+             <div id="divTableExperience"></div>     
+             <div id="divTableCVExperience"></div> 
+          </div>
+
+          <div id="divHighlightsDetails">  
+            <div id="divHighlightsDetailsHeader">Highlights</div>
+            <div id="divCVHighlightsDetailsHeader">CV Highlights</div>
+            <div id="divTableHighlights"></div>     
+            <div id="divTableCVHighlights"></div> 
+         </div>
+
+         <div id="divInterestsDetails">  
+          <div id="divInterestsDetailsHeader">Interests</div>
+          <div id="divCVInterestsDetailsHeader">CV Interests</div>
+          <div id="divTableInterests"></div>     
+          <div id="divTableCVInterests"></div> 
+       </div>
+
+       <div id="divOtherDetails">  
+           <div id="divOtherDetailsHeader">Other Information</div>
+           <div id="divCVOtherDetailsHeader">CV Other Information</div>
+           <div id="divTableOther"></div>     
+           <div id="divTableCVOther"></div> 
+       </div>       
+
+       <div id="divPersonalInfoDetails">  
+          <div id="divPersonalInfoDetailsHeader">Personal Information</div>
+          <div id="divCVPersonalInfoDetailsHeader">CV Personal Information</div>
+          <div id="divTablePersonalInfo"></div>     
+          <div id="divTableCVPersonalInfo"></div> 
+       </div>       
+
+       <div id="divPersonalityDetails">  
+          <div id="divPersonalityDetailsHeader">Personality</div>
+          <div id="divCVPersonalityDetailsHeader">CV Personality</div>
+          <div id="divTablePersonality"></div>     
+          <div id="divTableCVPersonality"></div> 
+       </div>  
+
+       <div id="divResponsibilitiesDetails">  
+          <div id="divResponsibilitiesDetailsHeader">Responsibilities</div>
+          <div id="divCVResponsibilitiesDetailsHeader">CV Responsibilities</div>
+          <div id="divTableResponsibilities"></div>     
+          <div id="divTableCVResponsibilites"></div> 
+       </div>  
+
+       <div id="divSkillsDetails">  
+          <div id="divSkillsDetailsHeader">Skills</div>
+          <div id="divCVSkillsDetailsHeader">CV Skills</div>
+          <div id="divTableSkills"></div>     
+          <div id="divTableCVSkills"></div> 
+       </div>   
+
+         <div id="divFooter">
+           <button id="btnPrint" class="clhFormbutton" tabindex="15">Create CV</button>
+           <button id="btnClearCV" class="clhFormbutton" tabindex="16">Clear CV</button>
+        </div>
+     </div>
+  
+        <section>
+        <input type="text" id="txtHidden"/>
+         <dialog id="dlgMessage">
+            <div id="divMessage">
+               <img src="" id="imgMessage"/>
+               <p id="pMessage"></p>
+               <button id="btnMsgBox_Ok" hidden></button>
+               <button id="btnMsgBox_Cancel" hidden></button> 
+           </div>
+         </dialog>
+    </section>
+
+    <script src="/modules/cvtemplatemaintenance/controller.js" type="module" defer></script>
+    <script src="/modules/cvtemplatemaintenance/model.js" type="module" defer></script>
+    <script src="/modules/cvtemplatemaintenance/view.js" type="module" defer></script>
+    <script src="/modules/messageBox.js" type="module" defer></script> 
+    <script src="/modules/schema.js" type="module" defer></script>
+
+</body>
+</html>

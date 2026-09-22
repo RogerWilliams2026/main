@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_screens.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_mailshots_creator.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_MsgBox.css"></link>
+</head>
+<body>
+    <main>
+        <!-- 
+            Uses two tables:
+
+              Seekers_Mailshot_Header
+              Seekers_Mailshot_Lines
+        
+        -->
+         <section id="secMain-MailshotsCreator" tabindex="1">    
+            <label for="cmbID" id="lblID">Mailshot ID:</label>    
+            <select id="cmbID">
+           </select>
+       
+           <button id="btnNew" tabindex="2">New</button> 
+
+           <label for="txtMSH_MailshotName" id="lblMSH_MailshotName">Mailshot Name:</label>
+           <input type="text" maxlength="50" id="txtMSH_MailshotName" tabindex="3"/>
+
+           <label for="txtMSH_CVPath" id="lblMSH_CVPath">CV To Print:</label>
+           <textarea maxlength="4096" id="txtMSH_CVPath" tabindex="4"></textarea>
+           <!-- <img id="imgCV" src="/images/search.png"/>  -->
+
+           <label for="dteMSH_PrintedDate" id="lblMSH_PrintedDate">Date Last Printed:</label>
+           <input type="text" id="dteMSH_PrintedDate" disabled tabindex="5"/>
+           <label for="txtMSH_LetterPath" id="lblMSH_LetterPath">Letter To Print:</label>
+           <textarea maxlength="4096" id="txtMSH_LetterPath" tabindex="6"></textarea>
+           <!-- <img id="imgLetter" src="/images/search.png"/>  -->
+
+           <div class="clhLine"></div> 
+
+          <!--
+             has 7 columns! as this cannot be done creatin 7 
+             lists instead :)
+             
+             Columns are:
+    
+             company
+             contact
+             address 1
+             address 2
+             address 3
+             town/city
+             postcode
+          -->
+     
+          <!-- table headers-->
+          <div id="divTableHeaders">
+            <div id="divTableHeaderSelect">Select</div>
+            <div id="divTableHeader1">Company</div>
+            <div id="divTableHeader2">Contact</div>
+            <div id="divTableHeader3">Address 1</div>
+            <div id="divTableHeader4">Address 2</div>
+            <div id="divTableHeader5">Address 3</div>
+            <div id="divTableHeader6">Town/City</div>
+            <div id="divTableHeader7">PostCode</div>
+            <div id="divTableHeader8">Print Contact</div>
+          </div>
+          <!-- table div-->
+          <div id="divMailshotAddresses">
+          </div>
+
+          <!-- Seekers_Maiilshot_Lines --> 
+          <label for="txtMSL_Contact" id="lblMSL_Contact">Contact:</label>
+          <input type="text" maxlength="30" id="txtMSL_Contact" tabindex="7"/>
+          <label for="txtMSL_CompanyName" id="lblMSL_CompanyName">Company:</label>
+          <input type="text" maxlength="50" id="txtMSL_CompanyName" tabindex="8"/>
+          <label for="txtMSL_Address1" id="lblMSL_Address1">Address 1:</label>
+          <input type="text" maxlength="255" id="txtMSL_Address1" tabindex="9"/>
+          <label for="txtMSL_Address2" id="lblMSL_Address2">Address 2:</label>
+          <input type="text" maxlength="255" id="txtMSL_Address2" tabindex="10"/>
+          <label for="txtMSL_Address3" id="lblMSL_Address3">Address 3:</label>
+          <input type="text" maxlength="255" id="txtMSL_Address3" tabindex="11"/>
+          <label for="txtMSL_TownCity" id="lblMSL_TownCity">Town/City:</label>
+          <input type="text" maxlength="30" id="txtMSL_TownCity" tabindex="12"/>
+          <label for="txtMSL_Postcode" id="lblMSL_Postcode">Postcode:</label>
+          <input type="text" maxlength="15" id="txtMSL_Postcode" tabindex="13"/>
+ 
+          <div id="divAddress">
+            <button id="btnNewAddress" tabindex="14">New Address Record</button>
+            <button id="btnSaveAddress" tabindex="15">Save Address Record</button>
+            <button id="btnClearAddress" tabindex="16">Clear Address Controls</button>
+            <button id="btnDeleteAddress" tabindex="17">Delete Address Record</button>
+          </div>
+
+          <!-- Seekers_Mailshot_Header-->
+          <label for="chkMSH_PrintContact" id="lblMSH_PrintContact">Print FAO Contact/HR On Envelope</label>  
+         <input type="checkbox" id="chkMSH_PrintContact" class="clhCheckBox" checked="false" tabindex="17"/>  
+   
+        </section>
+    <footer>
+        <button id="btnSave" class="clhFormbutton" tabindex="18">Save</button>
+        <button id="btnUndo" class="clhFormbutton" tabindex="19">Undo</button>
+        <button id="btnDelete" class="clhFormbutton" tabindex="20">Delete</button>
+        <button id="btnPrintMailshot" tabindex="21" class="clhFormbutton" >Print Mailshot</button>
+        <button id="btnPrintTestEnvelope" tabindex="22" class="clhFormbutton" >Print Test Envelope</button>
+    </footer>
+
+    <section>
+        <input type="text" id="txtHidden"/>
+         <dialog id="dlgMessage">
+            <div id="divMessage">
+               <img src="" id="imgMessage"/>
+               <p id="pMessage"></p>
+               <button id="btnMsgBox_Ok" hidden></button>
+               <button id="btnMsgBox_Cancel" hidden></button> 
+           </div>
+         </dialog>
+    </section>
+
+    <script src="/modules/mailshotscreator/controller.js" type="module" defer></script>
+    <script src="/modules/mailshotscreator/model.js" type="module" defer></script>
+    <script src="/modules/mailshotscreator/view.js" type="module" defer></script>
+    <script src="/modules/messageBox.js" type="module" defer></script> 
+    <script src="/modules/schema.js" type="module" defer></script>
+
+</body>
+</html>
