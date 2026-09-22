@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2026/05/06 17:52:13.000.989,=C:\projects\delphi\Delphi13\Unit1.pas</Transaction>
+    <Transaction>2026/05/06 17:52:53.000.403,C:\projects\delphi\Delphi13\Unit1.dfm=C:\projects\delphi\Delphi13\TKinterIDE\frmMain.dfm</Transaction>
+    <Transaction>2026/05/06 17:52:53.000.403,C:\projects\delphi\Delphi13\Unit1.pas=C:\projects\delphi\Delphi13\TKinterIDE\frmMain.pas</Transaction>
+    <Transaction>2026/05/06 17:53:05.000.561,C:\projects\delphi\Delphi13\Project1.dproj=C:\projects\delphi\Delphi13\TKinterIDE\RogTkinterIDE.dproj</Transaction>
+    <Transaction>2026/05/06 17:54:55.000.669,=C:\projects\delphi\Delphi13\TKinterIDE\Unit2.pas</Transaction>
+    <Transaction>2026/05/06 17:56:50.000.346,C:\projects\delphi\Delphi13\TKinterIDE\Unit2.pas=C:\projects\delphi\Delphi13\TKinterIDE\Form_ToolBox.pas</Transaction>
+    <Transaction>2026/05/06 17:56:50.000.346,C:\projects\delphi\Delphi13\TKinterIDE\Unit2.dfm=C:\projects\delphi\Delphi13\TKinterIDE\Form_ToolBox.dfm</Transaction>
+    <Transaction>2026/05/06 17:57:06.000.572,C:\projects\delphi\Delphi13\TKinterIDE\frmMain.pas=C:\projects\delphi\Delphi13\TKinterIDE\Form_Main.pas</Transaction>
+    <Transaction>2026/05/06 17:57:06.000.572,C:\projects\delphi\Delphi13\TKinterIDE\frmMain.dfm=C:\projects\delphi\Delphi13\TKinterIDE\Form_Main.dfm</Transaction>
+    <Transaction>2026/05/06 19:57:02.000.948,=C:\projects\delphi\Delphi13\TKinterIDE\Unit1.pas</Transaction>
+    <Transaction>2026/05/07 09:52:05.000.145,=C:\projects\delphi\Delphi13\TKinterIDE\Unit1.pas</Transaction>
+    <Transaction>2026/05/07 09:53:06.000.681,C:\projects\delphi\Delphi13\TKinterIDE\Form_Properties.dfm=C:\projects\delphi\Delphi13\TKinterIDE\Unit1.dfm</Transaction>
+    <Transaction>2026/05/07 09:53:06.000.681,C:\projects\delphi\Delphi13\TKinterIDE\Form_Properties.pas=C:\projects\delphi\Delphi13\TKinterIDE\Unit1.pas</Transaction>
+    <Transaction>2026/05/07 10:15:08.000.187,=C:\projects\delphi\Delphi13\TKinterIDE\Unit1.pas</Transaction>
+    <Transaction>2026/05/07 10:16:22.000.526,C:\projects\delphi\Delphi13\TKinterIDE\clsTkinterFormControls.pas=C:\projects\delphi\Delphi13\TKinterIDE\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
