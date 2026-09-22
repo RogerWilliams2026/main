@@ -1,0 +1,593 @@
+using System.Diagnostics.Eventing.Reader;
+using System.Runtime.InteropServices;
+using System.Windows.Forms.VisualStyles;
+/*
+    Created 04/09/2025 By Roger Williams
+
+    Test for seing if possible to draw controls with CURVED corners!!
+  
+    Works so far:
+  
+    - button
+    - label
+    - panel
+    - groupbox
+    - form!!
+
+    Text centring is a bit of a guess and labels need to have autosize OFF
+
+
+*/
+namespace CurvedButtonsTest
+{
+    public partial class Form1 : Form
+    {
+        Brush bruButtonBackground = new SolidBrush(Color.SteelBlue); //MUST be same colour as form!
+        Brush bruButtonHover = new SolidBrush(Color.CadetBlue);
+        Brush bruButtonText = new SolidBrush(Color.Ivory);
+        //used for drawing curves
+        Point pntTopl1 = new Point(10, 10);
+        Point pntTopl2 = new Point(10, 10);
+        Point pntTopl3 = new Point(10, 10);
+        Point pntTopl4 = new Point(10, 10);
+
+        Point pntTopr1 = new Point(10, 10);
+        Point pntTopr2 = new Point(10, 10);
+        Point pntTopr3 = new Point(10, 10);
+        Point pntTopr4 = new Point(10, 10);
+
+        Point pntBotl1 = new Point(10, 10);
+        Point pntBotl2 = new Point(10, 10);
+        Point pntBotl3 = new Point(10, 10);
+        Point pntBotl4 = new Point(10, 10);
+
+        Point pntBotr1 = new Point(10, 10);
+        Point pntBotr2 = new Point(10, 10);
+        Point pntBotr3 = new Point(10, 10);
+        Point pntBotr4 = new Point(10, 10);
+
+        Point[] aryPoints = new Point[4];
+
+        Font fntShowHide = new Font("Segoe UI", 11, FontStyle.Bold);
+        Pen penButtonBorder = new Pen(Color.White);
+
+        //stores selected button stops issues with paint event!
+        string strSelectedButton = String.Empty;
+        //used in paint event to determine if normal colour or highlight as background
+        Brush bruTemp = new SolidBrush(Color.Ivory);
+
+        Font fntLabel = new Font("Segoe UI", 10, FontStyle.Bold);
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void CustomButton_Paint(object sender, PaintEventArgs e)
+        {
+            /*
+               Created 18/08/2025 By Roger Williams
+
+               draws custom button with curved edges!
+
+              
+              
+             
+             */
+            Rectangle rctTemp = e.ClipRectangle;
+
+            //top left curve
+            pntTopl1.X = rctTemp.X + 1;
+            pntTopl1.Y = rctTemp.Y + 4;
+
+            pntTopl2.X = rctTemp.X + 2;
+            pntTopl2.Y = rctTemp.Y + 3;
+
+            pntTopl3.X = rctTemp.X + 3;
+            pntTopl3.Y = rctTemp.Y + 2;
+
+            pntTopl4.X = rctTemp.X + 7;
+            pntTopl4.Y = rctTemp.Y + 1;
+
+            //top right curve
+            pntTopr1.X = rctTemp.X + rctTemp.Width - 8;
+            pntTopr1.Y = rctTemp.Y + 1;
+
+            pntTopr2.X = rctTemp.X + rctTemp.Width - 4;
+            pntTopr2.Y = rctTemp.Y + 2;
+
+            pntTopr3.X = rctTemp.X + rctTemp.Width - 3;
+            pntTopr3.Y = rctTemp.Y + 3;
+
+            pntTopr4.X = rctTemp.X + rctTemp.Width - 2;
+            pntTopr4.Y = rctTemp.Y + 4;
+
+            //bottom left curve
+            pntBotl1.X = rctTemp.X + 1;
+            pntBotl1.Y = rctTemp.Y + rctTemp.Bottom - 5;
+
+            pntBotl2.X = rctTemp.X + 2;
+            pntBotl2.Y = rctTemp.Y + rctTemp.Bottom - 4;
+
+            pntBotl3.X = rctTemp.X + 3;
+            pntBotl3.Y = rctTemp.Y + rctTemp.Bottom - 3;
+
+            pntBotl4.X = rctTemp.X + 7;
+            pntBotl4.Y = rctTemp.Y + rctTemp.Bottom - 2;
+
+            //bottom right curve
+            pntBotr1.X = rctTemp.X + rctTemp.Width - 8;
+            pntBotr1.Y = rctTemp.Y + rctTemp.Bottom - 2;
+
+            pntBotr2.X = rctTemp.X + rctTemp.Width - 4;
+            pntBotr2.Y = rctTemp.Y + rctTemp.Bottom - 3;
+
+            pntBotr3.X = rctTemp.X + rctTemp.Width - 3;
+            pntBotr3.Y = rctTemp.Y + rctTemp.Bottom - 4;
+
+            pntBotr4.X = rctTemp.X + rctTemp.Width - 2;
+            pntBotr4.Y = rctTemp.Y + rctTemp.Bottom - 5;
+
+            //"clear" button rectangle
+            e.Graphics.DrawRectangle(penButtonBorder, rctTemp);
+
+            //if button highlighted
+            if (strSelectedButton == ((Button)sender).Name)
+            {
+                bruTemp = bruButtonHover;
+            }
+            else
+            {   //normal background colour
+                bruTemp = bruButtonBackground;
+            }
+
+            e.Graphics.FillRectangle(bruTemp, rctTemp);
+
+
+            //can I curve the edges?
+            aryPoints[0] = pntTopl1;
+            aryPoints[1] = pntTopl2;
+            aryPoints[2] = pntTopl3;
+            aryPoints[3] = pntTopl4;
+            //top left curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+            //top line
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Left + 8, rctTemp.Top, rctTemp.Right - 9, rctTemp.Top);
+            aryPoints[0] = pntTopr1;
+            aryPoints[1] = pntTopr2;
+            aryPoints[2] = pntTopr3;
+            aryPoints[3] = pntTopr4;
+            //top right curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+            //draw sides!
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Left, rctTemp.Top + 5, rctTemp.Left, rctTemp.Top + 5 + (rctTemp.Bottom - 11));
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Right - 1, rctTemp.Top + 5, rctTemp.Right - 1, rctTemp.Top + 5 + (rctTemp.Bottom - 11));
+            //bottom left curve
+            aryPoints[0] = pntBotl1;
+            aryPoints[1] = pntBotl2;
+            aryPoints[2] = pntBotl3;
+            aryPoints[3] = pntBotl4;
+            //bottom left curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+            //draw bottom line
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Left + 8, rctTemp.Bottom - 1, rctTemp.Right - 9, rctTemp.Bottom - 1);
+            aryPoints[0] = pntBotr1;
+            aryPoints[1] = pntBotr2;
+            aryPoints[2] = pntBotr3;
+            aryPoints[3] = pntBotr4;
+            //bottom right curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+            //draw text
+            e.Graphics.DrawString(((Button)sender).Text, fntShowHide, bruButtonText, rctTemp.Width /2 - 30, rctTemp.Height /2 - 10);
+        }
+
+        private void CustomButton_MouseEnter(object sender, EventArgs e)
+        {
+            //set selected button
+            strSelectedButton = ((Button)sender).Name;
+            this.label2.Text = "Selected Button: " + strSelectedButton;
+        }
+
+        private void CustomButton_MouseLeave(object sender, EventArgs e)
+        {
+            //set to normal background
+            bruTemp = bruButtonBackground;
+            //clear selected button
+            strSelectedButton = String.Empty;
+            this.label2.Text = strSelectedButton;
+        }
+
+        private void CustomButton_Click(object sender, EventArgs e)
+        {
+            //show clicked button name
+            strSelectedButton = ((Button)sender).Name;
+            this.label1.Text = strSelectedButton;
+        }
+
+
+
+        private void CustomLabel_Paint(object sender, PaintEventArgs e)
+        {
+            /*
+               Created 04/09/2025 By Roger Williams
+
+               draws custom label with curved edges!
+
+              
+              
+             
+             */
+            Rectangle rctTemp = e.ClipRectangle;
+
+            //top left curve
+            pntTopl1.X = rctTemp.X + 1;
+            pntTopl1.Y = rctTemp.Y + 4;
+
+            pntTopl2.X = rctTemp.X + 2;
+            pntTopl2.Y = rctTemp.Y + 3;
+
+            pntTopl3.X = rctTemp.X + 3;
+            pntTopl3.Y = rctTemp.Y + 2;
+
+            pntTopl4.X = rctTemp.X + 7;
+            pntTopl4.Y = rctTemp.Y + 1;
+
+            //top right curve
+            pntTopr1.X = rctTemp.X + rctTemp.Width - 8;
+            pntTopr1.Y = rctTemp.Y + 1;
+
+            pntTopr2.X = rctTemp.X + rctTemp.Width - 4;
+            pntTopr2.Y = rctTemp.Y + 2;
+
+            pntTopr3.X = rctTemp.X + rctTemp.Width - 3;
+            pntTopr3.Y = rctTemp.Y + 3;
+
+            pntTopr4.X = rctTemp.X + rctTemp.Width - 2;
+            pntTopr4.Y = rctTemp.Y + 4;
+
+            //bottom left curve
+            pntBotl1.X = rctTemp.X + 1;
+            pntBotl1.Y = rctTemp.Y + rctTemp.Bottom - 5;
+
+            pntBotl2.X = rctTemp.X + 2;
+            pntBotl2.Y = rctTemp.Y + rctTemp.Bottom - 4;
+
+            pntBotl3.X = rctTemp.X + 3;
+            pntBotl3.Y = rctTemp.Y + rctTemp.Bottom - 3;
+
+            pntBotl4.X = rctTemp.X + 7;
+            pntBotl4.Y = rctTemp.Y + rctTemp.Bottom - 2;
+
+            //bottom right curve
+            pntBotr1.X = rctTemp.X + rctTemp.Width - 8;
+            pntBotr1.Y = rctTemp.Y + rctTemp.Bottom - 2;
+
+            pntBotr2.X = rctTemp.X + rctTemp.Width - 4;
+            pntBotr2.Y = rctTemp.Y + rctTemp.Bottom - 3;
+
+            pntBotr3.X = rctTemp.X + rctTemp.Width - 3;
+            pntBotr3.Y = rctTemp.Y + rctTemp.Bottom - 4;
+
+            pntBotr4.X = rctTemp.X + rctTemp.Width - 2;
+            pntBotr4.Y = rctTemp.Y + rctTemp.Bottom - 5;
+
+            //"clear" button rectangle
+            e.Graphics.DrawRectangle(penButtonBorder, rctTemp);
+
+            //normal background colour
+                bruTemp = bruButtonBackground;
+
+            e.Graphics.FillRectangle(bruTemp, rctTemp);
+
+
+            //can I curve the edges?
+            aryPoints[0] = pntTopl1;
+            aryPoints[1] = pntTopl2;
+            aryPoints[2] = pntTopl3;
+            aryPoints[3] = pntTopl4;
+            //top left curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+            //top line
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Left + 8, rctTemp.Top, rctTemp.Right - 9, rctTemp.Top);
+            aryPoints[0] = pntTopr1;
+            aryPoints[1] = pntTopr2;
+            aryPoints[2] = pntTopr3;
+            aryPoints[3] = pntTopr4;
+            //top right curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+            //draw sides!
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Left, rctTemp.Top + 5, rctTemp.Left, rctTemp.Top + 5 + (rctTemp.Bottom - 11));
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Right - 1, rctTemp.Top + 5, rctTemp.Right - 1, rctTemp.Top + 5 + (rctTemp.Bottom - 11));
+            //bottom left curve
+            aryPoints[0] = pntBotl1;
+            aryPoints[1] = pntBotl2;
+            aryPoints[2] = pntBotl3;
+            aryPoints[3] = pntBotl4;
+            //bottom left curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+            //draw bottom line
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Left + 8, rctTemp.Bottom - 1, rctTemp.Right - 9, rctTemp.Bottom - 1);
+            aryPoints[0] = pntBotr1;
+            aryPoints[1] = pntBotr2;
+            aryPoints[2] = pntBotr3;
+            aryPoints[3] = pntBotr4;
+            //bottom right curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+            //draw text                                                        //crude attempt at centring the text!
+            if (((Label)sender).Text.Length <= 7)
+                    {
+                e.Graphics.DrawString(((Label)sender).Text, fntLabel, bruButtonText, ((Label)sender).Text.Length * 2, rctTemp.Height / 2 - 10);
+            }
+            else
+            {
+                e.Graphics.DrawString(((Label)sender).Text, fntLabel, bruButtonText, ((Label)sender).Text.Length * 2 - (((Label)sender).Text.Length /2 + 10), rctTemp.Height / 2 - 10);
+            }
+        }
+
+
+
+        private void CustomPanel_Paint(object sender, PaintEventArgs e)
+        {
+            /*
+               Created 04/09/2025 By Roger Williams
+
+               draws custom panel with curved edges!
+
+              
+              
+             
+             */
+            Rectangle rctTemp = e.ClipRectangle;
+
+            //top left curve
+            pntTopl1.X = rctTemp.X + 1;
+            pntTopl1.Y = rctTemp.Y + 4;
+
+            pntTopl2.X = rctTemp.X + 2;
+            pntTopl2.Y = rctTemp.Y + 3;
+
+            pntTopl3.X = rctTemp.X + 3;
+            pntTopl3.Y = rctTemp.Y + 2;
+
+            pntTopl4.X = rctTemp.X + 7;
+            pntTopl4.Y = rctTemp.Y + 1;
+
+            //top right curve
+            pntTopr1.X = rctTemp.X + rctTemp.Width - 8;
+            pntTopr1.Y = rctTemp.Y + 1;
+
+            pntTopr2.X = rctTemp.X + rctTemp.Width - 4;
+            pntTopr2.Y = rctTemp.Y + 2;
+
+            pntTopr3.X = rctTemp.X + rctTemp.Width - 3;
+            pntTopr3.Y = rctTemp.Y + 3;
+
+            pntTopr4.X = rctTemp.X + rctTemp.Width - 2;
+            pntTopr4.Y = rctTemp.Y + 4;
+
+            //bottom left curve
+            pntBotl1.X = rctTemp.X + 1;
+            pntBotl1.Y = rctTemp.Y + rctTemp.Bottom - 5;
+
+            pntBotl2.X = rctTemp.X + 2;
+            pntBotl2.Y = rctTemp.Y + rctTemp.Bottom - 4;
+
+            pntBotl3.X = rctTemp.X + 3;
+            pntBotl3.Y = rctTemp.Y + rctTemp.Bottom - 3;
+
+            pntBotl4.X = rctTemp.X + 7;
+            pntBotl4.Y = rctTemp.Y + rctTemp.Bottom - 2;
+
+            //bottom right curve
+            pntBotr1.X = rctTemp.X + rctTemp.Width - 8;
+            pntBotr1.Y = rctTemp.Y + rctTemp.Bottom - 2;
+
+            pntBotr2.X = rctTemp.X + rctTemp.Width - 4;
+            pntBotr2.Y = rctTemp.Y + rctTemp.Bottom - 3;
+
+            pntBotr3.X = rctTemp.X + rctTemp.Width - 3;
+            pntBotr3.Y = rctTemp.Y + rctTemp.Bottom - 4;
+
+            pntBotr4.X = rctTemp.X + rctTemp.Width - 2;
+            pntBotr4.Y = rctTemp.Y + rctTemp.Bottom - 5;
+
+            //"clear" button rectangle
+            e.Graphics.DrawRectangle(penButtonBorder, rctTemp);
+
+            //normal background colour
+            bruTemp = bruButtonBackground;
+
+            e.Graphics.FillRectangle(bruTemp, rctTemp);
+
+
+            //can I curve the edges?
+            aryPoints[0] = pntTopl1;
+            aryPoints[1] = pntTopl2;
+            aryPoints[2] = pntTopl3;
+            aryPoints[3] = pntTopl4;
+            //top left curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+            //top line
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Left + 8, rctTemp.Top, rctTemp.Right - 9, rctTemp.Top);
+            aryPoints[0] = pntTopr1;
+            aryPoints[1] = pntTopr2;
+            aryPoints[2] = pntTopr3;
+            aryPoints[3] = pntTopr4;
+            //top right curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+            //draw sides!
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Left, rctTemp.Top + 5, rctTemp.Left, rctTemp.Top + 5 + (rctTemp.Bottom - 11));
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Right - 1, rctTemp.Top + 5, rctTemp.Right - 1, rctTemp.Top + 5 + (rctTemp.Bottom - 11));
+            //bottom left curve
+            aryPoints[0] = pntBotl1;
+            aryPoints[1] = pntBotl2;
+            aryPoints[2] = pntBotl3;
+            aryPoints[3] = pntBotl4;
+            //bottom left curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+            //draw bottom line
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Left + 8, rctTemp.Bottom - 1, rctTemp.Right - 9, rctTemp.Bottom - 1);
+            aryPoints[0] = pntBotr1;
+            aryPoints[1] = pntBotr2;
+            aryPoints[2] = pntBotr3;
+            aryPoints[3] = pntBotr4;
+            //bottom right curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+        }
+
+
+
+
+        private void CustomTab_Paint(object sender, PaintEventArgs e)
+        {
+            /*
+               Created 04/09/2025 By Roger Williams
+
+               draws custom panel with curved edges!
+
+              
+              
+             
+             */
+            Rectangle rctTemp = e.ClipRectangle;
+
+            //top left curve
+            pntTopl1.X = rctTemp.X + 1;
+            pntTopl1.Y = rctTemp.Y + 4;
+
+            pntTopl2.X = rctTemp.X + 2;
+            pntTopl2.Y = rctTemp.Y + 3;
+
+            pntTopl3.X = rctTemp.X + 3;
+            pntTopl3.Y = rctTemp.Y + 2;
+
+            pntTopl4.X = rctTemp.X + 7;
+            pntTopl4.Y = rctTemp.Y + 1;
+
+            //top right curve
+            pntTopr1.X = rctTemp.X + rctTemp.Width - 8;
+            pntTopr1.Y = rctTemp.Y + 1;
+
+            pntTopr2.X = rctTemp.X + rctTemp.Width - 4;
+            pntTopr2.Y = rctTemp.Y + 2;
+
+            pntTopr3.X = rctTemp.X + rctTemp.Width - 3;
+            pntTopr3.Y = rctTemp.Y + 3;
+
+            pntTopr4.X = rctTemp.X + rctTemp.Width - 2;
+            pntTopr4.Y = rctTemp.Y + 4;
+
+            //bottom left curve
+            pntBotl1.X = rctTemp.X + 1;
+            pntBotl1.Y = rctTemp.Y + rctTemp.Bottom - 5;
+
+            pntBotl2.X = rctTemp.X + 2;
+            pntBotl2.Y = rctTemp.Y + rctTemp.Bottom - 4;
+
+            pntBotl3.X = rctTemp.X + 3;
+            pntBotl3.Y = rctTemp.Y + rctTemp.Bottom - 3;
+
+            pntBotl4.X = rctTemp.X + 7;
+            pntBotl4.Y = rctTemp.Y + rctTemp.Bottom - 2;
+
+            //bottom right curve
+            pntBotr1.X = rctTemp.X + rctTemp.Width - 8;
+            pntBotr1.Y = rctTemp.Y + rctTemp.Bottom - 2;
+
+            pntBotr2.X = rctTemp.X + rctTemp.Width - 4;
+            pntBotr2.Y = rctTemp.Y + rctTemp.Bottom - 3;
+
+            pntBotr3.X = rctTemp.X + rctTemp.Width - 3;
+            pntBotr3.Y = rctTemp.Y + rctTemp.Bottom - 4;
+
+            pntBotr4.X = rctTemp.X + rctTemp.Width - 2;
+            pntBotr4.Y = rctTemp.Y + rctTemp.Bottom - 5;
+
+            //"clear" button rectangle
+            e.Graphics.DrawRectangle(penButtonBorder, rctTemp);
+
+            //normal background colour
+            bruTemp = bruButtonBackground;
+
+            e.Graphics.FillRectangle(bruTemp, rctTemp);
+
+
+            //can I curve the edges?
+            aryPoints[0] = pntTopl1;
+            aryPoints[1] = pntTopl2;
+            aryPoints[2] = pntTopl3;
+            aryPoints[3] = pntTopl4;
+            //top left curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+            //top line
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Left + 8, rctTemp.Top, rctTemp.Right - 9, rctTemp.Top);
+            aryPoints[0] = pntTopr1;
+            aryPoints[1] = pntTopr2;
+            aryPoints[2] = pntTopr3;
+            aryPoints[3] = pntTopr4;
+            //top right curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+            //draw sides!
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Left, rctTemp.Top + 5, rctTemp.Left, rctTemp.Top + 5 + (rctTemp.Bottom - 11));
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Right - 1, rctTemp.Top + 5, rctTemp.Right - 1, rctTemp.Top + 5 + (rctTemp.Bottom - 11));
+            //bottom left curve
+            aryPoints[0] = pntBotl1;
+            aryPoints[1] = pntBotl2;
+            aryPoints[2] = pntBotl3;
+            aryPoints[3] = pntBotl4;
+            //bottom left curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+            //draw bottom line
+            e.Graphics.DrawLine(penButtonBorder, rctTemp.Left + 8, rctTemp.Bottom - 1, rctTemp.Right - 9, rctTemp.Bottom - 1);
+            aryPoints[0] = pntBotr1;
+            aryPoints[1] = pntBotr2;
+            aryPoints[2] = pntBotr3;
+            aryPoints[3] = pntBotr4;
+            //bottom right curve
+            e.Graphics.DrawCurve(penButtonBorder, aryPoints);
+        }
+        //*form events***
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //Note: height and width havet to be set manuall, make sure AUTOSIZE is OFF!
+            this.LBLTest.Text = "testing";
+            this.LBLTest.Width = this.LBLTest.Text.Length * 10;
+            this.LBLTest.Height = 20;
+
+            this.LBLTest2.Text = "test label";
+            this.LBLTest2.Width = this.LBLTest.Text.Length * 10 + 4;
+            this.LBLTest2.Height = 20;
+
+            bruTemp = bruButtonBackground; //set default background colour
+
+            this.button1.Paint += CustomButton_Paint;
+            this.button1.MouseEnter += CustomButton_MouseEnter;
+            this.button1.MouseLeave += CustomButton_MouseLeave;
+            this.button1.Click += CustomButton_Click;
+
+            this.button2.Paint += CustomButton_Paint;
+            this.button2.MouseEnter += CustomButton_MouseEnter;
+            this.button2.MouseLeave += CustomButton_MouseLeave;
+            this.button2.Click += CustomButton_Click;
+
+            this.button3.Paint += CustomButton_Paint;
+            this.button3.MouseEnter += CustomButton_MouseEnter;
+            this.button3.MouseLeave += CustomButton_MouseLeave;
+            this.button3.Click += CustomButton_Click;
+
+
+            this.LBLTest.Paint += CustomLabel_Paint;
+            this.LBLTest2.Paint += CustomLabel_Paint;
+            this.PANTest.Paint += CustomPanel_Paint;
+            this.GRPTest.Paint += CustomPanel_Paint;
+
+            this.Paint += CustomPanel_Paint; //!
+        }
+
+        private void LBLTest_Paint(object? sender, PaintEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
