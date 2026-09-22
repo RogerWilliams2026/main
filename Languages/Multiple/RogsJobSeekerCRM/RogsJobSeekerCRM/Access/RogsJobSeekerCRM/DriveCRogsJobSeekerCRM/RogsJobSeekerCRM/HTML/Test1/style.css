@@ -1,0 +1,162 @@
+:root {
+/* used for variables for CSS use only
+------------------------------------*/
+      --color-light--3: rgb(214, 222, 224);
+}
+ 
+/* applies style to EVERY element
+-------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+/* set base font style and family
+-------------------------------*/
+body {
+      font-family: Helvetica;
+      font-size: 100%;
+      line-height: 130%;
+      background-color: RGB(255,255,255);
+      color: RGB(0,0,0);
+} 
+ 
+h1 {
+      font-size: 2.5em;
+      font-weight: 700;
+      line-height: 150%;
+      text-transform: Capitalize;
+      background-color: RGB(255,255,255);
+      color: RGB(0,0,0);
+}
+ 
+h2 {
+      font-size: 1.5em;
+      line-height: 130%;
+      font-weight: 700;
+      text-transform: Capitalize;
+      background-color: RGB(255,255,255);
+      color: RGB(0,0,0);
+} 
+ 
+h3 {
+      font-size: 1.3em;
+      line-height: 130%;
+      font-weight: 700;
+      text-transform: Capitalize;
+      background-color: RGB(255,255,255);
+      color: RGB(0,0,0);
+} 
+h4 {
+      font-size: 1.15em;
+      line-height: 130%;
+      font-weight: 700;
+      text-transform: Capitalize;
+      background-color: RGB(255,255,255);
+      color: RGB(0,0,0);
+} 
+h5 {
+      font-size: 1.8em;
+      line-height: 140%;
+      font-weight: 700;
+      text-transform: Capitalize;
+      background-color: RGB(255,255,255);
+      color: RGB(0,0,0);
+} 
+ 
+/* custom section styles
+----------------------*/
+ 
+--personalcontactInfo {
+      line-height: 150%;
+      font-weight: 400;
+      text-indent: 30px;
+      text-transform: Capitalize;
+      background-color: RGB(255,255,255);
+      color: RGB(0,0,0);
+}
+#educationInfo {
+      line-height: 140%;
+      font-weight: 400;
+      text-indent: 30px;
+      background-color: RGB(255,255,255);
+      color: RGB(0,85,0);
+}
+#experienceInfo {
+      line-height: 140%;
+      font-weight: 400;
+      text-indent: 30px;
+      background-color: RGB(255,255,255);
+      color: RGB(0,0,0);
+}
+#rolesInfo {
+      line-height: 130%;
+      font-weight: 400;
+      text-indent: 30px;
+      background-color: RGB(255,255,255);
+      color: RGB(0,0,0);
+}
+#highlightsInfo {
+      line-height: 130%;
+      font-weight: 400;
+      text-indent: 30px;
+      background-color: RGB(255,255,255);
+      color: RGB(0,0,0);
+}
+#otherInfo {
+      line-height: 130%;
+      font-weight: 400;
+      text-indent: 30px;
+      background-color: RGB(255,255,255);
+      color: RGB(0,0,0);
+}
+#skillsInfo {
+      line-height: 130%;
+      font-weight: 400;
+      text-indent: 30px;
+      background-color: RGB(255,255,255);
+      color: RGB(0,0,0);
+}
+#currentfocusInfo {
+      line-height: 130%;
+      font-weight: 400;
+      text-indent: 30px;
+      background-color: RGB(255,255,255);
+      color: RGB(0,0,0);
+}
+#interestsInfo {
+      line-height: 130%;
+      font-weight: 400;
+      text-indent: 30px;
+      background-color: RGB(255,255,255);
+      color: RGB(0,0,0);
+}
+#personalityInfo {
+      line-height: 130%;
+      font-weight: 400;
+      text-indent: 30px;
+      background-color: RGB(255,255,255);
+      color: RGB(0,0,0);
+}
+#imgPhoto {
+      height: 200px;
+      width:  200px;
+      float:  right;
+} 
+.--halfBr {
+      line-height: 8px;
+}
+.--Line1 {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      margin-left: auto;
+      margin-right: auto;
+      border: solid rgb(0,0,0);
+      border-width: thin;
+      height: 0.5px;
+      size: 20;
+}
+.--Line2 {
+      border-width: thin;
+      height: 0.2px;
+}

@@ -1,0 +1,674 @@
+Option Compare Database
+Option Explicit
+
+Public Const OFN_EXPLORER = &H80000             ' new look commdlg
+Public Type TOPENFILENAME
+    lStructSize As Long
+    hwndOwner As Long
+    hInstance As Long
+    lpstrFilter As String
+    lpstrCustomFilter As String
+    nMaxCustFilter As Long
+    nFilterIndex As Long
+    lpstrFile As String
+    nMaxFile As Long
+    lpstrFileTitle As String
+    nMaxFileTitle As Long
+    lpstrInitialDir As String
+    lpstrTitle As String
+    flags As Long
+    nFileOffset As Integer
+    nFileExtension As Integer
+    lpstrDefExt As String
+    lCustData As Long
+    lpfnHook As Long
+    lpTemplateName As String
+End Type
+
+Public Const SW_SHOWNORMAL = 1
+
+Public Declare PtrSafe Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
+Public Declare PtrSafe Function GetOpenFileNamePreview Lib "msvfw32.dll" (ByRef lpofn As TOPENFILENAME) As Long
+Public Declare PtrSafe Function GetSaveFileNamePreview Lib "msvfw32.dll" Alias "GetSaveFileNamePreviewA" (ByRef lpofn As TOPENFILENAME) As Long
+Public Declare PtrSafe Function CloseHandle Lib "kernel32" (ByVal hObject As Long) As Long
+
+'used by closeprocess
+Public Declare PtrSafe Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
+Const GW_HWNDNEXT = 2
+
+'used to run program that prints the CV/letter
+'This program needs a common dialog box, named CDBox
+'  (To add the Common Dialog Box to your tools menu, go to Project->Components (or press CTRL-T)
+'   and select Microsoft Common Dialog control)
+
+Public Const STARTF_USESHOWWINDOW = &H1
+Public Const SW_HIDE = 0
+
+Sub CreateTypes()
+'Created 21/08/2024 By Roger Williams
+'
+'creates a text file in: C:\Temp
+'that contains types structures for each table
+'
+'
+Dim tblTemp As DAO.TableDef
+Dim db As DAO.Database
+Dim fldTemp As DAO.Field
+
+Set db = CodeDb
+Open "C:\Temp\types.txt" For Output As #1
+Print #1, "'**************types for tables***********"
+Print #1, "'used by forms as temp tables"
+Print #1, "'"
+
+For Each tblTemp In db.TableDefs
+    Print #1, "Type T" & tblTemp.Name
+    
+    For Each fldTemp In tblTemp.Fields
+        Select Case fldTemp.Type
+          Case dbText, dbMemo, dbComplexText
+               Print #1, fldTemp.Name & " as String"
+          Case dbDate
+               Print #1, fldTemp.Name & " as Date"
+          Case dbNumeric, dbDouble, dbInteger, dbLong
+               Print #1, fldTemp.Name & " as Integer"
+        End Select
+    Next fldTemp
+    
+    Print #1, "End Type"
+    Print #1, " "
+Next tblTemp
+
+Set db = Nothing
+Set tblTemp = Nothing
+Set fldTemp = Nothing
+Print #1, "'************end types for tables*********"
+Close #1
+MsgBox "Created!"
+End Sub
+
+Function IsNothingIn(vVal As Variant) As Boolean
+'Created 21/08/2024 By Roger Williams
+'
+'checks if vartemp is empty
+'
+On Error Resume Next
+
+IsNothingIn = False
+
+If IsEmpty(vVal) Then
+   IsNothingIn = True
+   Exit Function
+End If
+
+If IsNull(vVal) Then
+   IsNothingIn = True
+   Exit Function
+End If
+
+If Len(vVal) = 0 Then
+   IsNothingIn = True
+   Exit Function
+End If
+
+End Function
+
+Sub ListTables()
+'lists tables to: c:\temp\tables.txt
+Dim tblTemp As DAO.TableDef
+Dim db As DAO.Database
+
+Set db = CodeDb
+Open "C:\Temp\tables.txt" For Output As #1
+Print #1, "'**************tables***********"
+Print #1, "'"
+
+For Each tblTemp In db.TableDefs
+    Print #1, tblTemp.Name
+Next tblTemp
+
+Print #1, "'************end tables*********"
+Close #1
+End Sub
+Sub ListTablesAsJSConst()
+'lists tables to: c:\temp\tables.txt
+Dim tblTemp As DAO.TableDef
+Dim db As DAO.Database
+
+Set db = CodeDb
+Open "C:\Temp\tablesJSconsts.txt" For Output As #1
+Print #1, "//**************table names***********"
+Print #1, " "
+
+For Each tblTemp In db.TableDefs
+    Print #1, "export const const" & tblTemp.Name & " = " & Chr(34) & tblTemp.Name & Chr(34)
+Next tblTemp
+
+Close #1
+End Sub
+Sub ListTablesandFields()
+'lists tables to: c:\temp\tables.txt
+Dim tblTemp As DAO.TableDef
+Dim db As DAO.Database
+Dim fldTemp As DAO.Field
+
+Set db = CodeDb
+Open "C:\Temp\tables.txt" For Output As #1
+Print #1, "'**************tables***********"
+Print #1, "'"
+
+For Each tblTemp In db.TableDefs
+    Print #1, tblTemp.Name
+    
+    For Each fldTemp In tblTemp.Fields
+        Print #1, fldTemp.Name
+    Next fldTemp
+    
+    Print #1, vbCrLf
+Next tblTemp
+
+Print #1, "'************end tables*********"
+Close #1
+End Sub
+Sub ListTablesandFieldsAsJavaScript()
+'lists tables to: c:\temp\tablesforjavascript.txt as JavaScript objects
+Dim tblTemp As DAO.TableDef
+Dim db As DAO.Database
+Dim fldTemp As DAO.Field
+Dim intNum As Integer
+Dim strPrimary As String
+
+Set db = CodeDb
+Open "C:\Temp\tablesforjavascript.txt" For Output As #1
+Print #1, "/*"
+Print #1, "  Note: IndexedDB does not support field sizes they are included for HTML"
+Print #1, "        data entry validation"
+Print #1, "*/"
+Print #1, " "
+Print #1, "//**************tables schema************"
+Print #1, Chr(34) & "use strict" & Chr(34)
+Print #1, " "
+Print #1, "export const aryTables = ["
+    
+For Each tblTemp In db.TableDefs
+   If InStr(1, tblTemp.Name, "msys") = 0 And InStr(1, tblTemp.Name, "usys") = 0 And InStr(1, tblTemp.Name, "ribbon") = 0 Then
+
+    Print #1, "  {"
+    Print #1, "tblName: " & Chr(34) & tblTemp.Name & Chr(34) & ","
+    Print #1, "aryFields: ["
+    
+    'get primary key
+    For intNum = 0 To tblTemp.Indexes.Count - 1
+         If tblTemp.Indexes(intNum).Primary Then
+            strPrimary = tblTemp.Indexes(intNum).Fields(0).Name
+            Exit For
+         End If
+    Next intNum
+    
+    For Each fldTemp In tblTemp.Fields
+        Print #1, " {"
+        Print #1, "fieldName: " & Chr(34) & fldTemp.Name & Chr(34) & ","
+         
+        If fldTemp.Name = tblTemp.Fields(0).Name Then
+          Print #1, "primaryKey: true,"
+        Else
+          Print #1, "primaryKey: false,"
+        End If
+        
+        If fldTemp.Type = 4 Then
+            Print #1, "autoNumber: true,"
+        Else
+            Print #1, "autoNumber: false,"
+        End If
+    
+        Select Case fldTemp.Type
+          Case 8
+             Print #1, "fieldSize: 12,"
+             'add empty field value so web applioation can use it for data storage
+             Print #1, "fieldValue: " & Chr(34) & Chr(34) & ","
+          Case 10
+             Print #1, "fieldSize: " & fldTemp.Size & ","
+             'add empty field value so web applioation can use it for data storage
+             Print #1, "fieldValue: " & Chr(34) & Chr(34) & ","
+         Case 12
+             Print #1, "fieldSize: 4096,"  'memo field
+             'add empty field value so web applioation can use it for data storage
+             Print #1, "fieldValue: " & Chr(34) & Chr(34) & ","
+
+          Case Else
+             Print #1, "fieldSize: 0,"
+             'add empty field value so web applioation can use it for data storage
+             Print #1, "fieldValue: 0,"
+
+        End Select
+        
+        If fldTemp.Required Then
+           Print #1, "requiredField: true"
+        Else
+           Print #1, "requiredField: false"
+        End If
+        
+        Print #1, "    },"
+    Next fldTemp
+    
+
+    Print #1, "    ],"
+    Print #1, "    },"
+    
+    Print #1, vbCrLf
+ End If
+Next tblTemp
+    
+Print #1, "    ];"
+Print #1, "//************end tables*********"
+Close #1
+MsgBox "Finished!"
+End Sub
+
+
+'***********************************************************************************************
+'*******************           start of forms export/import/delete           *******************
+Sub deleteforms()
+'Created 27/06/2016 By Roger Williams
+'
+'Deletes all forms in the database
+'
+
+Dim docForm As Document
+Dim colTemp As Container
+Dim db As DAO.Database
+Dim frmTemp As Form
+
+Set db = CodeDb
+Set colTemp = db.Containers("Forms")
+
+For Each docForm In colTemp.Documents
+    DoCmd.DeleteObject acForm, docForm.Name
+Next docForm
+
+db.Close
+Set colTemp = Nothing
+MsgBox "Form Delete Complete COMPACT This Database", vbInformation
+
+End Sub
+Sub exportformstotext(strCycle As String)
+'Created 27/06/2016 By Roger Williams
+'
+'exports all forms to text files, creates directory to contain the text files
+'if it does not exist
+'
+'VARS
+'
+'strCycle: cycle e.g. Sell
+'
+
+Dim docForm As Document
+Dim colTemp As Container
+Dim db As DAO.Database
+
+If strCycle = "" Then
+   MsgBox "No Cycle Name Supplied e.g. sell", vbCritical, "Error"
+   Exit Sub
+End If
+
+If Dir$("c:\" & strCycle, vbDirectory) = "" Then
+   MkDir "c:\" & strCycle
+End If
+
+If Dir$("c:\" & strCycle & "\Forms", vbDirectory) = "" Then
+   MkDir "c:\" & strCycle & "\Forms"
+End If
+
+Set db = CodeDb
+Set colTemp = db.Containers("Forms")
+
+For Each docForm In colTemp.Documents
+    SaveAsText acForm, docForm.Name, "c:\" & strCycle & "\Forms\" & docForm.Name & ".txt"
+Next docForm
+
+db.Close
+Set colTemp = Nothing
+MsgBox "Export To Text Complete", vbInformation
+End Sub
+Sub importformsfromtext(strCycle As String)
+'Created 27/06/2016 By Roger Williams
+'
+'imports all forms from text files created in a directory named by strCycle
+'
+'VARS
+'
+'strCycle: cycle e.g. Sell where the text forms as stored
+'
+'NOTE: user must first run deleteforms BEFORE running this as the database
+'needs to be compacted after deletion of existing forms.
+'
+
+Dim strTemp As String
+Dim strForm As String
+
+If strCycle = "" Then
+   MsgBox "No Cycle Name Supplied e.g. sell", vbCritical, "Error"
+   Exit Sub
+End If
+
+If Dir$("c:\" & strCycle, vbDirectory) = "" Then
+   MsgBox strCycle & " Does Not Exist", vbExclamation, "No Forms To Import"
+End If
+
+strTemp = Dir$("c:\" & strCycle & "\Forms\*.txt")
+
+While strTemp <> ""
+    strForm = Mid$(strTemp, 1, InStr(1, strTemp, ".") - 1)
+    LoadFromText acForm, strForm, "c:\" & strCycle & "\Forms\" & strTemp
+    strTemp = Dir$
+Wend
+
+MsgBox "Import From Text Complete", vbInformation
+End Sub
+'*******************             end of forms export/import/delete           *******************
+'***********************************************************************************************
+
+
+'***********************************************************************************************
+'*******************         start of reports export/import/delete           *******************
+Sub deletereports()
+'Created 27/06/2016 By Roger Williams
+'
+'Deletes all reports in the database
+'
+
+Dim docForm As Document
+Dim colTemp As Container
+Dim db As DAO.Database
+
+Set db = CodeDb
+Set colTemp = db.Containers("Reports")
+
+For Each docForm In colTemp.Documents
+    DoCmd.DeleteObject acReport, docForm.Name
+Next docForm
+
+db.Close
+Set colTemp = Nothing
+MsgBox "Reports Delete Complete COMPACT This Database", vbInformation
+
+End Sub
+Sub exportreportstotext(strCycle As String)
+'Created 27/06/2016 By Roger Williams
+'
+'exports all forms to text files, creates directory to contain the text files
+'if it does not exist
+'
+'VARS
+'
+'strCycle: cycle e.g. Sell
+'
+
+Dim docForm As Document
+Dim colTemp As Container
+Dim db As DAO.Database
+
+If strCycle = "" Then
+   MsgBox "No Cycle Name Supplied e.g. sell", vbCritical, "Error"
+   Exit Sub
+End If
+
+If Dir$("c:\" & strCycle, vbDirectory) = "" Then
+   MkDir "c:\" & strCycle
+End If
+
+If Dir$("c:\" & strCycle & "\Reports", vbDirectory) = "" Then
+   MkDir "c:\" & strCycle & "\Reports"
+End If
+
+Set db = CodeDb
+Set colTemp = db.Containers("Reports")
+
+For Each docForm In colTemp.Documents
+    SaveAsText acReport, docForm.Name, "c:\" & strCycle & "\Reports\" & docForm.Name & ".txt"
+Next docForm
+
+db.Close
+Set colTemp = Nothing
+MsgBox "Export To Text Complete", vbInformation
+End Sub
+Sub importReportsfromtext(strCycle As String)
+'Created 27/06/2016 By Roger Williams
+'
+'imports all Reports from text files created in a directory named by strCycle
+'
+'VARS
+'
+'strCycle: cycle e.g. Sell where the text Reports as stored
+'
+'NOTE: user must first run deleteReports BEFORE running this as the database
+'needs to be compacted after deletion of existing Reports.
+'
+
+Dim strTemp As String
+Dim strForm As String
+
+If strCycle = "" Then
+   MsgBox "No Cycle Name Supplied e.g. sell", vbCritical, "Error"
+   Exit Sub
+End If
+
+If Dir$("c:\" & strCycle, vbDirectory) = "" Then
+   MsgBox strCycle & " Does Not Exist", vbExclamation, "No Reports To Import"
+End If
+
+strTemp = Dir$("c:\" & strCycle & "\Reports\*.txt")
+
+While strTemp <> ""
+    strForm = Mid$(strTemp, 1, InStr(1, strTemp, ".") - 1)
+    LoadFromText acReport, strForm, "c:\" & strCycle & "\Reports\" & strTemp
+    strTemp = Dir$
+Wend
+
+MsgBox "Import From Text Complete", vbInformation
+End Sub
+'*******************            end of reports export/import/delete          *******************
+'***********************************************************************************************
+
+
+'***********************************************************************************************
+'*******************           start of modules export/import/delete           *******************
+Sub deletemodules()
+'Created 27/06/2016 By Roger Williams
+'
+'Deletes all modules in the database
+'
+
+Dim docForm As Document
+Dim colTemp As Container
+Dim db As DAO.Database
+
+Set db = CodeDb
+Set colTemp = db.Containers("Modules")
+
+For Each docForm In colTemp.Documents
+    DoCmd.DeleteObject acModule, docForm.Name
+Next docForm
+
+db.Close
+Set colTemp = Nothing
+MsgBox "Form Delete Complete COMPACT This Database", vbInformation
+
+End Sub
+Sub exportmodulestotext(strCycle As String)
+'Created 27/06/2016 By Roger Williams
+'
+'exports all modules to text files, creates directory to contain the text files
+'if it does not exist
+'
+'VARS
+'
+'strCycle: cycle e.g. Sell
+'
+
+Dim docForm As Document
+Dim colTemp As Container
+Dim db As DAO.Database
+
+If strCycle = "" Then
+   MsgBox "No Cycle Name Supplied e.g. sell", vbCritical, "Error"
+   Exit Sub
+End If
+
+If Dir$("c:\" & strCycle, vbDirectory) = "" Then
+   MkDir "c:\" & strCycle
+End If
+
+If Dir$("c:\" & strCycle & "\Modules", vbDirectory) = "" Then
+   MkDir "c:\" & strCycle & "\Modules"
+End If
+
+Set db = CodeDb
+Set colTemp = db.Containers("Modules")
+
+For Each docForm In colTemp.Documents
+    SaveAsText acModule, docForm.Name, "c:\" & strCycle & "\Modules\" & docForm.Name & ".txt"
+Next docForm
+
+db.Close
+Set colTemp = Nothing
+MsgBox "Export To Text Complete", vbInformation
+End Sub
+Sub importmodulesfromtext(strCycle As String)
+'Created 27/06/2016 By Roger Williams
+'
+'imports all modules from text files created in a directory named by strCycle
+'
+'VARS
+'
+'strCycle: cycle e.g. Sell where the text modules as stored
+'
+'NOTE: user must first run deleteforms BEFORE running this as the database
+'needs to be compacted after deletion of existing modules.
+'
+
+Dim strTemp As String
+Dim strForm As String
+
+If strCycle = "" Then
+   MsgBox "No Cycle Name Supplied e.g. sell", vbCritical, "Error"
+   Exit Sub
+End If
+
+If Dir$("c:\" & strCycle, vbDirectory) = "" Then
+   MsgBox strCycle & " Does Not Exist", vbExclamation, "No Modules To Import"
+End If
+
+strTemp = Dir$("c:\" & strCycle & "\Modules\*.txt")
+
+While strTemp <> ""
+    strForm = Mid$(strTemp, 1, InStr(1, strTemp, ".") - 1)
+    LoadFromText acModule, strForm, "c:\" & strCycle & "\Modules\" & strTemp
+    strTemp = Dir$
+Wend
+
+MsgBox "Import From Text Complete", vbInformation
+End Sub
+'*******************             end of modules export/import/delete           *******************
+'***********************************************************************************************
+
+'***********************************************************************************************
+'*******************           start of macros export/import/delete           *******************
+Sub deletemacros()
+'Created 27/06/2016 By Roger Williams
+'
+'Deletes all macros in the database
+'
+
+Dim docForm As Document
+Dim colTemp As Container
+Dim db As DAO.Database
+
+Set db = CodeDb
+Set colTemp = db.Containers("scripts")
+
+For Each docForm In colTemp.Documents
+    DoCmd.DeleteObject acMacro, docForm.Name
+Next docForm
+
+db.Close
+Set colTemp = Nothing
+MsgBox "Form Delete Complete COMPACT This Database", vbInformation
+
+End Sub
+Sub exportmacrostotext(strCycle As String)
+'Created 27/06/2016 By Roger Williams
+'
+'exports all macros to text files, creates directory to contain the text files
+'if it does not exist
+'
+'VARS
+'
+'strCycle: cycle e.g. Sell
+'
+
+Dim docForm As Document
+Dim colTemp As Container
+Dim db As DAO.Database
+
+If strCycle = "" Then
+   MsgBox "No Cycle Name Supplied e.g. sell", vbCritical, "Error"
+   Exit Sub
+End If
+
+If Dir$("c:\" & strCycle, vbDirectory) = "" Then
+   MkDir "c:\" & strCycle
+End If
+
+If Dir$("c:\" & strCycle & "\macros", vbDirectory) = "" Then
+   MkDir "c:\" & strCycle & "\macros"
+End If
+
+Set db = CodeDb
+Set colTemp = db.Containers("scripts")
+
+For Each docForm In colTemp.Documents
+    SaveAsText acMacro, docForm.Name, "c:\" & strCycle & "\macros\" & docForm.Name & ".txt"
+Next docForm
+
+db.Close
+Set colTemp = Nothing
+MsgBox "Export To Text Complete", vbInformation
+End Sub
+Sub importmacrosfromtext(strCycle As String)
+'Created 27/06/2016 By Roger Williams
+'
+'imports all macros from text files created in a directory named by strCycle
+'
+'VARS
+'
+'strCycle: cycle e.g. Sell where the text macros as stored
+'
+'NOTE: user must first run deleteforms BEFORE running this as the database
+'needs to be compacted after deletion of existing macros.
+'
+
+Dim strTemp As String
+Dim strForm As String
+
+If strCycle = "" Then
+   MsgBox "No Cycle Name Supplied e.g. sell", vbCritical, "Error"
+   Exit Sub
+End If
+
+If Dir$("c:\" & strCycle, vbDirectory) = "" Then
+   MsgBox strCycle & " Does Not Exist", vbExclamation, "No Macros To Import"
+End If
+
+strTemp = Dir$("c:\" & strCycle & "\macros\*.txt")
+
+While strTemp <> ""
+    strForm = Mid$(strTemp, 1, InStr(1, strTemp, ".") - 1)
+    LoadFromText acMacro, strForm, "c:\" & strCycle & "\macros\" & strTemp
+    strTemp = Dir$
+Wend
+
+MsgBox "Import From Text Complete", vbInformation
+End Sub
+'*******************             end of macros export/import/delete           *******************
+'***********************************************************************************************

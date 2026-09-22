@@ -1,0 +1,725 @@
+Option Compare Database
+'**************types for tables***********
+'used by forms as temp tables
+'
+'
+
+Type TCV_Colours
+     COL_ID As Long
+     COL_Back As Long
+     COL_Font As Long
+     CVT_ID As Long
+End Type
+
+Type TCV_Contact
+     CVC_ID As Long
+     CVC_Address1 As String
+     CVC_Address2 As String
+     CVC_Address3 As String
+     CVC_Landline As String
+     CVC_CellPhone As String
+     CVC_Postcode As String
+     CVC_TownCity As String
+     CVC_Email As String
+End Type
+ 
+Type TCV_CSS
+     CVC_ID As Long
+     CVC_CSS As String
+     CVC_CSSName As String
+End Type
+ 
+ 
+Type TCV_CurrentFocus
+     CVF_ID As Long
+     CVF_Details As String
+End Type
+
+Type TCV_Education
+     CVED_ID As Long
+     CVED_YearStarted As Integer
+     CVED_YearEnded As Integer
+     CVED_Where As String
+     CVED_What As String
+     CVED_Grade As String
+End Type
+ 
+Type TCV_Experience
+     CVE_ID As Long
+     CVE_YearStarted As Integer
+     CVE_YearEnded As Integer
+     CVE_Where As String
+     CVE_Role As String 'changed to number in table as links to CVR_ID
+     CVE_Responsibilities As String
+     CVE_Achievements As String
+End Type
+ 
+Type TCV_Highlights
+     CVH_ID As Long
+     CVH_Name As String
+     CVH_Details As String
+End Type
+ 
+Type TCV_HTML
+     CVW_ID As Long
+     CVW_HTML As String
+     CVW_Name As String
+End Type
+ 
+Type TCV_Images
+     CVM_ID As Long
+     CVM_FileName As String
+End Type
+ 
+Type TCV_Interests
+     CVI_ID As Long
+     CVI_Name As String
+     CVI_Details As String
+End Type
+ 
+Type TCV_Other
+     CVO_ID As Long
+     CVO_Name As String
+     CVO_Details As String
+     CVO_WebLink As String
+End Type
+ 
+Type TCV_PersonalInfo
+     CVP_ID As Long
+     CVP_Name As String
+     CVP_Nationality As String
+     CVP_DOB As Date
+     CVP_SalaryRange As String
+     CVP_Image As String
+End Type
+ 
+Type TCV_Personality
+     CVPP_ID As Long
+     CVPP_Details As String
+End Type
+
+Type TCVR_Responsibilities
+     CVRR_ID As Long
+     CVRR_Name As String
+     CVRR_Details As String
+     CVR_ID As Long
+End Type
+
+Type TCV_Roles
+     CVR_ID As Long
+     CVR_Name As String
+End Type
+ 
+Type TCV_Skills
+     CVS_ID As Long
+     CVS_SkillName As String
+     CVS_Details As String
+End Type
+ 
+Type TCV_Templates
+     CVT_ID As Integer
+     CVT_Name As String
+     CVT_JobTitle As String
+     CVT_IncludeAddress As Boolean
+End Type
+  
+Type TLink_CV_Contact
+     LC_ID As Integer
+     LC_CVC_ID As Integer
+     LC_GroupID As Integer
+End Type
+ 
+Type TLink_CV_CurrentFocus
+     LF_ID As Integer
+     LF_CVF_ID As Integer
+     LF_GroupID As Integer
+End Type
+
+Type TLink_CV_Education
+     LE_ID As Integer
+     LE_CVED_ID As Integer
+     LE_GroupID As Integer
+End Type
+ 
+Type TLink_CV_Experience
+     LX_ID As Integer
+     LX_CVE_ID As Integer
+     LX_GroupID As Integer
+End Type
+ 
+Type TLink_CV_Highlights
+     LH_ID As Integer
+     LH_CVH_ID As Integer
+     LH_GroupID As Integer
+End Type
+ 
+Type TLink_CV_Interests
+     LI_ID As Integer
+     LI_CVI_ID As Integer
+     LI_GroupID As Integer
+End Type
+ 
+Type TLink_CV_Other
+     LO_ID As Integer
+     LO_CVO_ID As Integer
+     LO_GroupID As Integer
+End Type
+ 
+Type TLink_CV_PersonalInfo
+     LP_ID As Integer
+     LP_CVP_ID As Integer
+     LP_GroupID As Integer
+End Type
+ 
+Type TLink_CV_Personality
+     LPP_ID As Integer
+     LPP_CVPP_ID As Integer
+     LPP_GroupID As Integer
+End Type
+ 
+Type TLink_CV_Roles
+     LR_ID As Integer
+     LR_CVR_ID As Integer
+     LR_GroupID As Integer
+End Type
+ 
+Type TLink_CV_Skills
+     LS_ID As Integer
+     LS_CVS_ID As Integer
+     LS_GroupID As Integer
+End Type
+ 
+Type TSeekers_Areas
+     ARE_ID As Long
+     ARE_Name As String
+     ARE_PartialPoatCode As String
+End Type
+ 
+Type TSeekers_Jobs
+     JOB_ID As Long
+     JOB_Title As String
+     JOB_Description As String
+     JOB_Details As String
+     JOB_DateApplied As Date
+     JOB_DateExpires As Date
+     JOB_Status As String
+     JOB_PhoneNumber As String
+     JOB_ContactName As String
+     JOB_Company As String
+     JOB_Salary As String
+     JOB_TownCity As String
+     JOB_Postcode As String
+     JOB_Direct As Boolean
+     JOB_Sector As String
+     JOB_Type As String
+     JOB_Hours As String
+     JOB_Where As String
+End Type
+ 
+Type TSeekers_Mailshot_Header
+     MSH_ID As Long
+     MSH_MailshotName As String
+     MSH_CVPath As String
+     MSH_LetterPath As String
+     MSH_Left As Integer
+     MSH_Top As Integer
+     MSH_EnvelopeSize As String
+     MSH_PrintedDate As Date
+     MSH_PrintContact As Boolean
+End Type
+ 
+Type TSeekers_Mailshot_Lines
+     MSL_ID As Long
+     MSL_CompanyName As String
+     MSL_Address1 As String
+     MSL_Address2 As String
+     MSL_Address3 As String
+     MSL_TownCity As String
+     MSL_Postcode As String
+     MSL_Contact As String
+     MSH_MailshotName As String
+End Type
+ 
+Type TSeekers_Sectors
+     SEC_ID As Long
+     SEC_Name As String
+     SEC_Description As String
+End Type
+ 
+Type TSeekers_Types
+     TYP_ID As Long
+     TYP_Type As String
+End Type
+
+Type TSeekers_Hours
+     HRS_ID As Long
+     HRS_Hours As String
+End Type
+
+Type TSeekers_Status
+     STA_ID As Long
+     STA_Status As String
+End Type
+ 
+ 
+Type TSeekers_Where
+     WHR_ID As Long
+     WHR_Where As String
+End Type
+'************end types for tables*********
+
+Type TSectionColours
+     strBackgroundRGB As String
+     strTextRGB As String
+     strSection As String
+     intCVTemplateID As Integer
+End Type
+
+
+
+'table public constants
+Public Const CNST_STR_CV_COLOURS = "CV_Colours"
+Public Const CNST_STR_CV_CONTACT = "CV_Contact"
+Public Const CNST_STR_CV_CURRENTFOCUS = "CV_CurrentFocus"
+Public Const CNST_STR_CV_CSS = "CV_CSS"
+Public Const CNST_STR_CV_EDUCATION = "CV_Education"
+Public Const CNST_STR_CV_EXPERIENCE = "CV_Experience"
+Public Const CNST_STR_CV_HIGHLIGHTS = "CV_Highlights"
+Public Const CNST_STR_CV_HTML = "CV_HTML"
+Public Const CNST_STR_CV_IMAGES = "CV_Images"
+Public Const CNST_STR_CV_INTERESTS = "CV_Interests"
+Public Const CNST_STR_CV_OTHER = "CV_Other"
+Public Const CNST_STR_CV_PERSONALINFO = "CV_PersonalInfo"
+Public Const CNST_STR_CV_PERSONALITY = "CV_Personality"
+Public Const CNST_STR_CV_ROLES = "CV_Roles"
+Public Const CNST_STR_CV_RESPONSIBILITIES = "CV_Responsibilites"
+Public Const CNST_STR_CV_SKILLS = "CV_Skills"
+Public Const CNST_STR_CV_TEMPLATES = "CV_Templates"
+
+Public Const CNST_STR_LINK_CV_CONTACT = "Link_CV_Contact"
+Public Const CNST_STR_LINK_CV_CURRENTFOCUS = "Link_CV_CurrentFocus"
+Public Const CNST_STR_LINK_CV_EDUCATION = "Link_CV_Education"
+Public Const CNST_STR_LINK_CV_EXPERIENCE = "Link_CV_Experience"
+Public Const CNST_STR_LINK_CV_HIGHLIGHTS = "Link_CV_Highlights"
+Public Const CNST_STR_LINK_CV_INTERESTS = "Link_CV_Interests"
+Public Const CNST_STR_LINK_CV_OTHER = "Link_CV_Other"
+Public Const CNST_STR_LINK_CV_PERSONALINFO = "Link_CV_PersonalInfo"
+Public Const CNST_STR_LINK_CV_PERSONALITY = "Link_CV_Personality"
+Public Const CNST_STR_LINK_CV_ROLES = "Link_CV_Roles"
+Public Const CNST_STR_LINK_CV_SKILLS = "Link_CV_Skills"
+
+Public Const CNST_STR_SEEKERS_AREAS = "Seekers_Areas"
+Public Const CNST_STR_SEEKERS_JOBS = "Seekers_Jobs"
+Public Const CNST_STR_SEEKERS_MAILSHOT_HEADER = "Seekers_Mailshot_Header"
+Public Const CNST_STR_SEEKERS_MAILSHOT_LINES = "Seekers_Mailshot_Lines"
+Public Const CNST_STR_SEEKERS_SECTORS = "Seekers_Sectors"
+Public Const CNST_STR_SEEKERS_TYPES = "Seekers_Types"
+Public Const CNST_STR_SEEKERS_HOURS = "Seekers_Hours"
+Public Const CNST_STR_SEEKERS_STATUS = "Seekers_Status"
+Public Const CNST_STR_SEEKERS_WHERE = "Seekers_Where"
+
+'public filed prefix constants
+Public Const CNST_STR_FIELD_CV_COLOURS = "COL_"
+Public Const CNST_STR_FIELD_CV_CONTACT = "CVC_"
+Public Const CNST_STR_FIELD_CV_CURRENTFOCUS = "CVF_"
+Public Const CNST_STR_FIELD_CV_CSS = "CSS_"
+Public Const CNST_STR_FIELD_CV_EDUCATION = "CVED_"
+Public Const CNST_STR_FIELD_CV_EXPERIENCE = "CVE_"
+Public Const CNST_STR_FIELD_CV_HIGHLIGHTS = "CVH_"
+Public Const CNST_STR_FIELD_CV_HTML = "CVW_"
+Public Const CNST_STR_FIELD_CV_IMAGES = "CVM_"
+Public Const CNST_STR_FIELD_CV_INTERESTS = "CVI_"
+Public Const CNST_STR_FIELD_CV_OTHER = "CVO_"
+Public Const CNST_STR_FIELD_CV_PERSONALINFO = "CVP_"
+Public Const CNST_STR_FIELD_CV_PERSONALITY = "CVPP_"
+Public Const CNST_STR_FIELD_CV_RESPONSIBILITIES = "CVRR_"
+Public Const CNST_STR_FIELD_CV_ROLES = "CVR_"
+Public Const CNST_STR_FIELD_CV_SKILLS = "CVS_"
+Public Const CNST_STR_FIELD_CV_TEMPLATES = "CV_"
+
+Public Const CNST_STR_FIELD_SEEKERS_AREAS = "ARE_"
+Public Const CNST_STR_FIELD_SEEKERS_JOBS = "JOB_"
+Public Const CNST_STR_FIELD_SEEKERS_MAILSHOT_HEADER = "MSH_"
+Public Const CNST_STR_FIELD_SEEKERS_MAILSHOT_LINES = "MSL_"
+Public Const CNST_STR_FIELD_SEEKERS_SECTORS = "SEC_"
+Public Const CNST_STR_FIELD_SEEKERS_TYPES = "TYP_"
+Public Const CNST_STR_FIELD_SEEKERS_HOURS = "HRS_"
+Public Const CNST_STR_FIELD_SEEKERS_STATUS = "STA_"
+Public Const CNST_STR_FIELD_SEEKERS_WHERE = "WHR_"
+
+'CSS/HTML section (id/class) constants
+Public Const CNST_STR_CSS_BODY = "body"
+Public Const CNST_STR_CSS_H1 = "h1"
+Public Const CNST_STR_CSS_H2 = "h2"
+Public Const CNST_STR_CSS_H3 = "h3"
+Public Const CNST_STR_CSS_H4 = "h4"
+Public Const CNST_STR_CSS_H5 = "h5"
+Public Const CNST_STR_CSS_PERSONALCONTACTINFO = "personalcontactInfo"
+Public Const CNST_STR_CSS_EDUCATIONINFO = "educationInfo"
+Public Const CNST_STR_CSS_EXPERIENCEINFO = "experienceInfo"
+Public Const CNST_STR_CSS_ROLESINFO = "rolesInfo"
+Public Const CNST_STR_CSS_HIGHLIGHTSINFO = "highlightsInfo"
+Public Const CNST_STR_CSS_OTHERINFO = "otherInfo"
+Public Const CNST_STR_CSS_SKILLSINFO = "skillsInfo"
+Public Const CNST_STR_CSS_CURRENTFOCUSINFO = "currentfocusInfo"
+Public Const CNST_STR_CSS_INTERESTSINFO = "interestsInfo"
+Public Const CNST_STR_CSS_PERSONALITYINFO = "personalityInfo"
+
+'location contants
+Public Const CNST_STR_CLIENTLOCATION = "C:\RogsJobSeekerCRM\"
+Public Const CNST_STR_CLIENTLOCATION_RIBBONIMAGES = "C:\RogsJobSeekerCRM\images\ribbon\"
+Public Const CNST_STR_HTMLLOCATION = CNST_STR_CLIENTLOCATION & "HTML"
+
+'form constants
+Public Const CNST_STR_COLOURS = "frmColours"
+Public Const CNST_STR_HTMLCREATOR = "frmHTMLVersionofCVTemplate"
+Public Const CNST_STR_HTMLCREATORHELP = "frmHowHTMLSetupWorks"
+Public Const CNST_STR_CVTEMPLATECREATOR = "frmCV_TemplateCreator"
+'general constants
+Public Const CNST_STR_SELECT_ALL = "{All}"
+Public Const CNST_INT_NUMBEROFSECTIONS = 16
+Public intEnvelopesPrinted As Integer
+Public arySections(CNST_INT_NUMBEROFSECTIONS) As TSectionColours
+Public aryPos As Integer
+'Created 21/08/2024 By Roger Williams
+'
+'Public var/subs and funcs
+'
+
+Sub PopulateFormLabels(strTable As String, ByRef frmForm As Form)
+'Created 21/08/2024 By Roger Williams
+'
+'uses the descripton property of the fields in the passed table schema to set the forms
+'label captions
+'
+'does this by stripping the controls name string starting at the first _
+'this is used to determine the label is linked to a field e.g. LBL_JOB_Title
+'if the field has no _ it is ignored
+'
+'for textboxes, checkboxes, listboxes and combos changes controls TAG to field type
+'if not numeric then sets tag with delimeter : to include field length
+'this is used when saving
+'
+'NOTE: dates have tag added of :10
+'
+Dim tblTemp As DAO.TableDef
+Dim fldTemp As DAO.Field
+Dim ctlTemp As control
+Dim db As DAO.Database
+Dim strTemp As String
+Dim intNum As Integer
+On Error GoTo ERR_Error
+
+Set db = CodeDb
+Set tblTemp = db.TableDefs(strTable)
+
+'For Each fldTemp In tblTemp.Fields
+    For Each ctlTemp In frmForm.Controls
+        intNum = InStr(1, ctlTemp.Name, "_")
+        
+        If intNum <> 0 Then
+            'extract field name
+           strTemp = Mid$(ctlTemp.Name, intNum + 1, Len(ctlTemp.Name))
+           
+           If tblTemp.Fields(strTemp).Properties("Description") <> "" Then
+              If ctlTemp.ControlType = acLabel Then
+                 ctlTemp.Caption = tblTemp.Fields(strTemp).Properties("Description") & ":"
+                 'make sure label is wide enough!
+                 ctlTemp.Width = (Len(tblTemp.Fields(strTemp).Properties("Description")) * 140) 'convert cm to twips
+              Else
+                 'set tag to field type
+                 ctlTemp.Tag = tblTemp.Fields(strTemp).Type
+                 
+                 'if applicable add to tag field length
+                 Select Case tblTemp.Fields(strTemp).Type
+                     Case dbText
+                          ctlTemp.Tag = ctlTemp.Tag & ":" & tblTemp.Fields(strTemp).Size
+                     Case dbDate
+                          ctlTemp.Tag = ctlTemp.Tag & ":10"
+                 End Select
+              End If
+         End If
+        End If
+    Next ctlTemp
+'Next fldTemp
+Set tblTemp = Nothing
+Set ctlTemp = Nothing
+Set db = Nothing
+Exit Sub
+
+ERR_Error:
+'skip if description ssing or missing caption proerty
+If Err.Number = 91 Or Err.Number = 3265 Or Err.Number = 3270 Then Resume Next
+Stop
+
+End Sub
+Function ValidateInputLength(ctlTemp As control, intKey As Integer) As Integer
+'Created 23/08/2024 By Roger Williams
+'
+'makes sure entered text is NOT longer than field size
+'
+'passed controls tag is read for value after :
+'
+'e.g.:
+'
+'ctltemp.tag = 1-:25  - max cahrs allowed 24
+'
+'if text value of control is > max length returns ZERO this should cancel
+'any pressed key from being added to the controls text
+'else returns key pressed
+'
+'
+Dim strTemp As String
+'Stop
+'extract max size
+strTemp = Mid$(ctlTemp.Tag, InStr(1, ctlTemp.Tag, ":") + 1, Len(ctlTemp.Tag))
+
+If Len(ctlTemp.Value) > CInt(strTemp) Then
+   ValidateInputLength = 0
+Else
+   ValidateInputLength = intKey
+End If
+End Function
+
+Sub InitForm(ByRef frmTemp As Form, strFieldPrefix As String)
+'Modified 23/08/2024 By Roger Williams
+'
+'Originally run in each form now moved here for global use
+'hence now passed form and field name which is the field name only
+'as far as the _ e.g. TYP_, STA_ etc.
+'
+'
+'Created 21/08/2024 By Roger Williams
+'
+'resets form data entry controls
+'
+'rather than hardcoding the controls names here looks through the control name
+'to see if they are data fields i.e. the name has a filed name at the end of it
+'e.g. TXT_JOB_Title
+'
+'this means developer can add new fields to the table and form and not need to
+'touch this code!
+'
+
+Dim ctlTemp As control
+Dim strTemp As String
+On Error GoTo ERR_Error
+
+'go through each control and add its value to the query IF table holds field data
+For Each ctlTemp In frmTemp.Controls
+    If InStr(1, ctlTemp.Name, strFieldPrefix) <> 0 And Not IsNothingIn(ctlTemp.Tag) Then
+       'extract field type from control tag
+       If InStr(1, ctlTemp.Tag, ":") <> 0 Then
+          strTemp = Mid$(ctlTemp.Tag, 1, InStr(1, ctlTemp.Tag, ":") - 1)
+       Else
+          strTemp = ctlTemp.Tag
+       End If
+       
+       If strTemp <> vbNullString Then
+       'get field type
+           Select Case CInt(strTemp)
+              Case dbText, dbMemo, dbComplexText
+                   ctlTemp.Value = vbNullString
+              Case dbDate
+                   ctlTemp.Value = vbNullString
+              Case dbNumeric, dbDouble, dbInteger, dbLong
+                   ctlTemp.Value = 0
+           End Select
+       End If
+    End If
+Next ctlTemp
+
+Exit Sub
+ERR_Error:
+Stop
+Resume Next
+End Sub
+
+Function SaveData(frmTemp As Form, strFieldPrefix As String, strTable As String, lngID As Long) As Integer
+'Created 23/08/2024 By Roger Williams
+'
+'MOVED from forms CMDSave_Click
+'
+'Added parameters:
+'
+'frmTemp        - form to read data from
+'strFieldPrefix - field prefix e.g. JOB_
+'strTable       - table e.g. Seekers_Jobs
+'lngID          - from typ<table>old.<fieldprefix>ID
+'
+'
+'saves the contents of the type to the table
+'
+'rather than hardcoding the controls names here looks through the control name
+'to see if they are data fields i.e. the name has a field name at the end of it
+'e.g. TXT_JOB_Title
+'
+'this means developer can add new fields to the table and form and not need to
+'touch this code!
+'
+Dim strInsertValues     As String
+Dim strInsertFields     As String
+Dim strUpdateValues     As String
+Dim strSQL              As String
+Dim strSQLLines         As String
+Dim strFieldName        As String
+Dim strTemp             As String
+Dim intNum              As Integer
+Dim ctlTemp             As control
+Dim db                  As DAO.Database
+
+Set db = CodeDb
+On Error GoTo ERR_Error
+
+'determine if new record
+If lngID = 0 Then
+   strInsertFields = "INSERT INTO " & strTable & " ("
+   strInsertValues = "VALUES ("
+   'go through each control and add its value to the query IF table holds field data
+   For Each ctlTemp In frmTemp.Controls
+       If ctlTemp.ControlType = acTextBox Or ctlTemp.ControlType = acComboBox Or ctlTemp.ControlType = acCheckBox Then
+            If InStr(1, ctlTemp.Name, strFieldPrefix) <> 0 Then
+               'get field name
+               strFieldName = Mid$(ctlTemp.Name, InStr(1, ctlTemp.Name, strFieldPrefix), Len(ctlTemp.Name))
+               strInsertFields = strInsertFields & strFieldName & ","
+               'extract field type from control tag
+               If InStr(1, ctlTemp.Tag, ":") = 0 Then
+                  strTemp = ctlTemp.Tag
+               Else
+                  strTemp = Mid$(ctlTemp.Tag, 1, InStr(1, ctlTemp.Tag, ":") - 1)
+               End If
+               
+               Select Case CInt(strTemp)
+                  Case dbText, dbMemo, dbComplexText
+                       strInsertValues = strInsertValues & Chr(34) & Nz(ctlTemp.Value, vbNullString) & Chr(34) & ","
+                  Case dbDate
+                       strInsertValues = strInsertValues & IIf(Len(ctlTemp.Value) = 0, "Null", "#" & Format(ctlTemp.Value, "mm/dd/yyyy") & "#") & ","
+                  Case dbNumeric, dbDouble, dbInteger, dbBoolean, dbLong
+                       strInsertValues = strInsertValues & Nz(ctlTemp.Value, 0) & ","
+               End Select
+            End If
+       End If
+NextControl:
+   Next ctlTemp
+   
+   'strip end ,
+   strInsertFields = Mid$(strInsertFields, 1, Len(strInsertFields) - 1)
+   strInsertValues = Mid$(strInsertValues, 1, Len(strInsertValues) - 1)
+   strSQL = strInsertFields & ") " & strInsertValues & ");"
+Else
+   'update data
+   strUpdateValues = "UPDATE " & strTable & " SET "
+   'go through each control and add its value to the query IF table holds field data
+   For Each ctlTemp In frmTemp.Controls
+       If ctlTemp.ControlType = acTextBox Or ctlTemp.ControlType = acComboBox Or ctlTemp.ControlType = acCheckBox Then
+            If InStr(1, ctlTemp.Name, strFieldPrefix) <> 0 Then
+               'get field name
+               strFieldName = Mid$(ctlTemp.Name, InStr(1, ctlTemp.Name, strFieldPrefix), Len(ctlTemp.Name))
+               'extract field type from control tag
+               
+               If InStr(1, ctlTemp.Tag, ":") = 0 Then
+                  strTemp = ctlTemp.Tag
+               Else
+                  strTemp = Mid$(ctlTemp.Tag, 1, InStr(1, ctlTemp.Tag, ":") - 1)
+               End If
+               
+               Select Case CInt(strTemp)
+                  Case dbText, dbMemo, dbComplexText
+                       strUpdateValues = strUpdateValues & strFieldName & " = " & Chr(34) & Nz(ctlTemp.Value, vbNullString) & Chr(34) & ","
+                    Case dbDate
+                       strUpdateValues = strUpdateValues & strFieldName & " = " & IIf(Nz(ctlTemp.Value, 0) = 0, "Null", "#" & Format(ctlTemp.Value, "mm/dd/yyyy") & "#") & ","
+                  Case dbNumeric, dbDouble, dbInteger, dbLong, dbBoolean
+                       strUpdateValues = strUpdateValues & strFieldName & " = " & Nz(ctlTemp.Value, 0) & ","
+                End Select
+            End If
+       End If
+   Next ctlTemp
+       
+   'strip end ,
+   strUpdateValues = Mid$(strUpdateValues, 1, Len(strUpdateValues) - 1)
+   strSQL = strUpdateValues & " WHERE " & strFieldPrefix & "ID=" & lngID & ";"
+End If
+
+'save job data
+db.Execute strSQL, dbFailOnError
+frmTemp.LBLStatus.Caption = "Saved"
+SaveData = 0
+MsgBox "Data Saved!", vbInformation, "Changes Saved"
+Exit Function
+
+ERR_Error:
+Stop
+Resume Next
+SaveData = Err.Number
+MsgBox "Unexpected Error", vbExclamation, "Error"
+Resume NextControl
+
+End Function
+
+Sub DeleteRecord(strTable As String, strFieldPrefix As String, lngID As Long, Optional strMailshotName)
+'Modified 26/06/2024 By Roger Williams
+'
+'changed so now handles header->line deletions suchas:
+'
+'- mailshots
+'- CVs
+'
+'
+'Created 23/08/2024 By Roger Williams
+'
+'deletes record
+'
+'strtable       - where to delete
+'strFieldPrefix - FLD_, JOB_ etc
+'lngID          - ID to delete
+'
+'
+On Error GoTo ERR_Error
+
+If MsgBox("Delete Record?", vbExclamation + vbYesNo, "Erase Data") = vbYes Then
+Stop
+    Select Case strTable
+    Case CNST_STR_SEEKERS_MAILSHOT_HEADER
+         CodeDb.Execute "DELETE * FROM " & CNST_STR_SEEKERS_MAILSHOT_HEADER & " WHERE MSH_MailshotName='" & strMailshotName & "'", dbFailOnError
+         CodeDb.Execute "DELETE * FROM " & CNST_STR_SEEKERS_MAILSHOT_LINES & " WHERE MSH_MailshotName='" & strMailshotName & "'", dbFailOnError
+    Case CNST_STR_CV_TEMPLATES
+         CodeDb.Execute "DELETE * FROM " & CNST_STR_CV_TEMPLATES & " WHERE CV_ID=" & lngID, dbFailOnError
+         CodeDb.Execute "DELETE * FROM " & CNST_STR_CV_CONTACT = "CV_Contact", dbFailOnError
+         CodeDb.Execute "DELETE * FROM " & CNST_STR_CV_CSS = "CV_CSS", dbFailOnError
+         CodeDb.Execute "DELETE * FROM " & CNST_STR_CV_EDUCATION = "CV_Education", dbFailOnError
+         CodeDb.Execute "DELETE * FROM " & CNST_STR_CV_EXPERIENCE = "CV_Experience", dbFailOnError
+         CodeDb.Execute "DELETE * FROM " & CNST_STR_CV_HIGHLIGHTS = "CV_Highlights", dbFailOnError
+         CodeDb.Execute "DELETE * FROM " & CNST_STR_CV_HTML = "CV_HTML", dbFailOnError
+         CodeDb.Execute "DELETE * FROM " & CNST_STR_CV_IMAGES = "CV_Images", dbFailOnError
+         CodeDb.Execute "DELETE * FROM " & CNST_STR_CV_INTERESTS = "CV_Interests", dbFailOnError
+         CodeDb.Execute "DELETE * FROM " & CNST_STR_CV_OTHER = "CV_Other", dbFailOnError
+         CodeDb.Execute "DELETE * FROM " & CNST_STR_CV_PERSONALINFO = "CV_PersonalInfo", dbFailOnError
+         CodeDb.Execute "DELETE * FROM " & CNST_STR_CV_RESPONSIBILITIES = "CV_Responsibilites", dbFailOnError
+         CodeDb.Execute "DELETE * FROM " & CNST_STR_CV_SKILLS = "CV_Skills", dbFailOnError
+    Case Else
+       CodeDb.Execute "DELETE * FROM " & strTable & " WHERE " & strFieldPrefix & "ID = " & lngID, dbFailOnError
+    End Select
+    
+    MsgBox "Deleted!"
+End If
+
+Exit Sub
+
+ERR_Error:
+Stop
+End Sub
+
+Sub RequeryComboBoxes(ByRef frmTemp As Form)
+'Created 23/08/2024 By Roger Williams
+'
+'requeries all comboboxes on passed form
+'
+Dim ctlTemp As control
+
+For Each ctlTemp In frmTemp.Controls
+'Stop
+    If ctlTemp.ControlType = acComboBox Then
+       ctlTemp.Requery
+    End If
+Next ctlTemp
+End Sub

@@ -1,0 +1,147 @@
+Option Compare Database
+Public RIBBON_MainMenu As IRibbonUI
+Public Sub RIBBON_Load(Ribbon As IRibbonUI)
+
+Set RIBBON_MainMenu = Ribbon
+ SendKeys "^{F1}", True
+
+End Sub
+Function ReplaceIllegalChars(strWhat As String) As String
+'Created 07/03/2022 By Roger Williams
+'
+'Replaces illegal characters for file names from the passed report name
+'
+'Illegal characters are:
+'
+'\/:*<>?|
+'
+'VARS
+'
+'strWhat    : report name to check
+'
+'RETURNS
+'
+'formatted string
+'
+'e.g.: hello\world returns: hello-world
+'
+'
+'
+Dim strTemp As String
+'Stop
+If InStr(1, strWhat, "\") > 0 Then
+   strTemp = Mid$(strWhat, 1, InStr(1, strWhat, "\") - 1) & "-" & Mid$(strWhat, InStr(1, strWhat, "\") + 1, Len(strWhat))
+Else
+  If InStr(1, strTemp, "/") > 0 Then
+     strTemp = Mid$(strWhat, 1, InStr(1, strWhat, "/") - 1) & "-" & Mid$(strWhat, InStr(1, strWhat, "/") + 1, Len(strWhat))
+  Else
+     strTemp = strWhat
+  End If
+End If
+
+ReplaceIllegalChars = strTemp
+End Function
+Private Function GetDateTime() As String
+Dim strTemp As String
+
+If Day(Date) < 10 Then
+   strTemp = "0" & Day(Date)
+Else
+   strTemp = Day(Date)
+End If
+
+If Month(Date) < 10 Then
+   strTemp = strTemp & "0" & Month(Date)
+Else
+   strTemp = strTemp & Month(Date)
+End If
+
+strTemp = strTemp & Year(Date)
+
+If Hour(Time) < 10 Then
+   strTemp = strTemp & "0" & Hour(Time)
+Else
+   strTemp = strTemp & Hour(Time)
+End If
+
+If Minute(Time) < 10 Then
+   strTemp = strTemp & "0" & Minute(Time)
+Else
+   strTemp = strTemp & Minute(Time)
+End If
+
+If Second(Time) < 10 Then
+   strTemp = strTemp & "0" & Second(Time)
+Else
+   strTemp = strTemp & Second(Time)
+End If
+
+GetDateTime = strTemp
+End Function
+Public Function RIBBON_GetMenuBarItem(control As IRibbonControl)
+'Called by buttons on the ribbon
+'
+'Uses the ribbon buttons TAG property to pass back the parameters for the
+'OpenMenuItem_ORB  function
+'
+'
+'button tag contians:
+'
+'<object name> <cycle)
+'
+'e.g.:
+'frmemployeemaint admin
+'
+Dim strObject As String
+Dim strFrom As String
+Dim strTemp As String
+
+On Error GoTo ERR_Error
+'Stop
+If control.Id = "Window" Then
+   DoCmd.OpenForm "frmOpenObjects", acNormal, , , , acDialog
+Else
+   strObject = control.Tag
+   DoCmd.OpenForm strObject, acNormal
+End If
+
+Exit Function
+
+ERR_Error:
+If Err.Number = 2476 Then
+   Exit Function
+Else
+   If Err.Number = 75 Then
+      Resume Next
+   Else
+   Stop
+   End If
+End If
+End Function
+Public Sub RIBBON_LoadImage(strImageName As String, ByRef RIBImage)
+'Created 25/02/2022 By Roger Williams
+'
+'Sets the button icon for ribbon items
+'
+'sets for:
+'
+'forms
+'reports
+'operations
+'
+'VARS
+'
+'strImagename   : cycle e.g. forms
+'RIBImage       : ribbon image object
+'
+Dim strTemp As String
+
+On Error GoTo ERR_Error
+'Stop
+strTemp = CNST_STR_CLIENTLOCATION_RIBBONIMAGES & strImageName
+Set RIBImage = LoadPicture(strTemp)
+Exit Sub
+
+ERR_Error:
+Stop
+End Sub
