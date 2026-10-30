@@ -2,8 +2,10 @@
 
 ## Contents
 
-- Course Certificates, documentation, manuals, code examples etc.
-- Languages source code for projects written in Delphi, VB, COBOL and C# as well projects using multiple languages
+- Docs:
+  Course Certificates, documentation, manuals, code examples etc.
+- Languages:
+  Code examples in multiple languages, and projects duplicated in different languages!
 - Fun other projects, music etc
 
   
